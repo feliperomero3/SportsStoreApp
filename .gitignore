@@ -231,4 +231,4 @@ _Pvt_Extensions
 .fake/
 
 # Third-party client-side libraries
-wwwroot/lib
+**/wwwroot/lib
