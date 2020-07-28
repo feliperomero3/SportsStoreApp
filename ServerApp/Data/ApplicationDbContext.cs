@@ -9,8 +9,8 @@ namespace ServerApp.Data
         {
         }
 
-        public DbSet<Product> Products { get; set; }
-        public DbSet<Supplier> Suppliers { get; set; }
+        public DbSet<Product> Products { get; private set; }
+        public DbSet<Supplier> Suppliers { get; private set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

@@ -6,10 +6,30 @@ namespace ServerApp.Models
     {
         public long ProductId { get; private set; }
         public string Name { get; private set; }
-        public string Category { get; private set; }
         public string Description { get; private set; }
+        public string Category { get; private set; }
         public decimal Price { get; private set; }
         public Supplier Supplier { get; private set; }
-        public IEnumerable<Rating> Ratings { get; private set; }
+        public ICollection<Rating> Ratings { get; private set; }
+
+        public Product(string name, string description, string category, decimal price, Supplier supplier,
+            ICollection<Rating> ratings)
+        {
+            Name = name;
+            Category = category;
+            Description = description;
+            Price = price;
+            Supplier = supplier;
+            Ratings = ratings;
+        }
+
+        public Product(string name, string description, string category, decimal price, Supplier supplier)
+        {
+            Name = name;
+            Description = description;
+            Category = category;
+            Price = price;
+            Supplier = supplier;
+        }
     }
 }

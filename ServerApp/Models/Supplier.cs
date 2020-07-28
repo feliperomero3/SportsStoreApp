@@ -8,6 +8,13 @@ namespace ServerApp.Models
         public string Name { get; private set; }
         public string City { get; private set; }
         public string State { get; private set; }
-        public IEnumerable<Product> Products { get; private set; }
+        public ICollection<Product> Products { get; private set; }
+
+        public Supplier(string name, string city, string state)
+        {
+            Name = name;
+            City = city;
+            State = state;
+        }
     }
 }
