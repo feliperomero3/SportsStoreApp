@@ -1,14 +1,12 @@
 # SportsStore
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.0.
+Based on the SportsStore Application built in ['Essential Angular for ASP.NET Core MVC 3 - A Practical Guide to Successfully Using Both in Your Projects'](https://www.apress.com/9781484229156) by Adam Freeman (Apress, 2019).
+
+The Application is one part Angular and other part ASP.NET Core MVC 3. This is the Angular part.
 
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
 ## Build
 
@@ -25,3 +23,5 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.0.
