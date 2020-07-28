@@ -1,19 +1,13 @@
-﻿using System.Linq;
-using ServerApp.Models;
+﻿using ServerApp.Models;
 
 namespace ServerApp.Data
 {
-    public class SeedData
+    public static class ApplicationDbContextSeedData
     {
         public static void SeedDatabase(ApplicationDbContext context)
         {
             context.Database.EnsureDeleted();
             context.Database.EnsureCreated();
-
-            if (context.Products.Any())
-            {
-                return;
-            }
 
             var s1 = new Supplier("Splash Dudes", "San Jose", "CA");
             var s2 = new Supplier("Football Town", "Chicago", "IL");

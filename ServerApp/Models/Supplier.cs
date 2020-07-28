@@ -10,6 +10,10 @@ namespace ServerApp.Models
         public string State { get; private set; }
         public ICollection<Product> Products { get; private set; }
 
+        private Supplier()
+        {
+        }
+
         public Supplier(string name, string city, string state)
         {
             Name = name;

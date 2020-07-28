@@ -12,6 +12,10 @@ namespace ServerApp.Models
         public Supplier Supplier { get; private set; }
         public ICollection<Rating> Ratings { get; private set; }
 
+        private Product()
+        {
+        }
+
         public Product(string name, string description, string category, decimal price, Supplier supplier,
             ICollection<Rating> ratings)
         {
