@@ -25,9 +25,6 @@ jobs:
     - name: Build
       working-directory: ClientApp
       run: npm run build
-    - name: Test
-      working-directory: ClientApp
-      run: npm run test
     - name: Lint
       working-directory: ClientApp
       run: npm run lint
