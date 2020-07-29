@@ -3,8 +3,10 @@ name: SportsStoreClientApp-CI
 on:
   push:
     branches: [ master ]
+    paths: ClientApp
   pull_request:
     branches: [ master ]
+    paths: ClientApp
 
 jobs:
   build:
