@@ -1,9 +1,13 @@
 import { TestBed, async } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
+import { ProductService } from './product.service';
+import { of } from 'rxjs';
 
 describe('AppComponent', () => {
+  let mockProductService: any;
   beforeEach(async(() => {
+    mockProductService = jasmine.createSpyObj(['getProduct']);
     TestBed.configureTestingModule({
       imports: [
         RouterTestingModule
@@ -11,6 +15,9 @@ describe('AppComponent', () => {
       declarations: [
         AppComponent
       ],
+      providers: [
+        { provide: ProductService, useValue: mockProductService }
+      ]
     }).compileComponents();
   }));
 
@@ -20,16 +27,18 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'SportsStore'`, () => {
+  it(`should have as title 'Products Catalog'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;
-    expect(app.title).toEqual('SportsStore');
+    expect(app.title).toEqual('Products Catalog');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
+    const product = { name: 'Kayak', description: 'A boat for one person', category: 'Water sports', price: '276' };
+    mockProductService.getProduct.and.returnValue(of(product));
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('h2').textContent).toContain('SportsStore app is running!');
+    expect(compiled.querySelector('h2').textContent).toContain('Products Catalog');
   });
 });

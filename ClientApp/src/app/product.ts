@@ -3,13 +3,13 @@ import { Rating } from './rating';
 
 export class Product {
   constructor(
-    productId: number,
-    name: string,
-    description: string,
-    category: string,
-    price: number,
-    supplier: Supplier,
-    ratings?: Rating[]) {
+    public productId: number,
+    public name: string,
+    public description: string,
+    public category: string,
+    public price: number,
+    public supplier: Supplier,
+    public ratings?: Rating[]) {
 
   }
 }

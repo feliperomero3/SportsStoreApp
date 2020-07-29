@@ -1,3 +1,24 @@
-<h2>SportsStore app is running!</h2>
-<span>Angular Content Will Go Here</span>
+<h2>{{title}}</h2>
+
+<div class="p-2">
+  <table class="table table-sm">
+    <tr>
+      <th>Name</th>
+      <td>{{product?.name}}</td>
+    </tr>
+    <tr>
+      <th>Category</th>
+      <td>{{product?.category}}</td>
+    </tr>
+    <tr>
+      <th>Description</th>
+      <td>{{product?.description}}</td>
+    </tr>
+    <tr>
+      <th>Price</th>
+      <td>{{product?.price}}</td>
+    </tr>
+  </table>
+</div>
+
 <router-outlet></router-outlet>
