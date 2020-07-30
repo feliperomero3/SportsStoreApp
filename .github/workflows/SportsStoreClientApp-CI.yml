@@ -24,9 +24,12 @@ jobs:
     - name: Clean install
       working-directory: ClientApp
       run: npm ci
-    - name: Build
-      working-directory: ClientApp
-      run: npm run build
     - name: Lint
       working-directory: ClientApp
       run: npm run lint
+    - name: Build
+      working-directory: ClientApp
+      run: npm run build
+    - name: Test
+      working-directory: ClientApp
+      run: npm run test
