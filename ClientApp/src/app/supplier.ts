@@ -2,10 +2,10 @@ import { Product } from './product';
 
 export class Supplier {
   constructor(
-    supplierId: number,
-    name: string,
-    city: string,
-    state: string,
-    products: Product[]) {
+    public supplierId: number,
+    public name: string,
+    public city: string,
+    public state: string,
+    public products: Product[]) {
   }
 }
