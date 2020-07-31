@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace ServerApp.Models
+namespace ServerApp.Entities
 {
     public class Product
     {

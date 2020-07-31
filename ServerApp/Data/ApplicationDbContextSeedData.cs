@@ -1,4 +1,5 @@
-﻿using ServerApp.Models;
+﻿using ServerApp.Entities;
+using ServerApp.Models;
 
 namespace ServerApp.Data
 {

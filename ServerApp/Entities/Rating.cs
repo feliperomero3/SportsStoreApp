@@ -1,4 +1,4 @@
-﻿namespace ServerApp.Models
+﻿namespace ServerApp.Entities
 {
     public class Rating
     {

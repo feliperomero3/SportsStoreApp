@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using ServerApp.Models;
+using ServerApp.Entities;
 
 namespace ServerApp.Data
 {
