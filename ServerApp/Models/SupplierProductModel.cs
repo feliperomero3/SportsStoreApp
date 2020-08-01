@@ -1,4 +1,5 @@
-﻿using ServerApp.Entities;
+﻿using System;
+using ServerApp.Entities;
 
 namespace ServerApp.Models
 {
@@ -10,8 +11,10 @@ namespace ServerApp.Models
         public string Category { get; set; }
         public decimal Price { get; set; }
 
-        public static SupplierProductModel FromProduct(Product product)
+        public static SupplierProductModel GetFromProduct(Product product)
         {
+            if (product == null) throw new ArgumentNullException(nameof(product));
+
             return new SupplierProductModel
             {
                 ProductId = product.ProductId,

@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ServerApp.Data;
@@ -25,38 +26,22 @@ namespace ServerApp.Controllers
                 .Include(p => p.Ratings)
                 .FirstOrDefault(p => p.ProductId == id);
 
-            var productModel = new ProductModel
-            {
-                ProductId = product.ProductId,
-                Name = product.Name,
-                Description = product.Description,
-                Category = product.Category,
-                Price = product.Price,
-                Supplier = new SupplierModel
-                {
-                    SupplierId = product.Supplier.SupplierId,
-                    Name = product.Supplier.Name,
-                    City = product.Supplier.City,
-                    State = product.Supplier.State,
-                    Products = product.Supplier.Products.Select(p =>
-                        new SupplierProductModel
-                        {
-                            ProductId = p.ProductId,
-                            Name = p.Name,
-                            Description = p.Description,
-                            Category = p.Category,
-                            Price = p.Price
-                        }).ToArray()
-                },
-                Ratings = product.Ratings.Select(r =>
-                    new RatingModel
-                    {
-                        RatingId = r.RatingId,
-                        Stars = r.Stars
-                    }).ToArray()
-            };
+            var productModel = ProductModel.GetFromProduct(product);
 
             return productModel;
+        }
+
+        [HttpGet]
+        public IEnumerable<ProductModel> GetProducts()
+        {
+            var products = _applicationDbContext.Products
+                .Include(p => p.Supplier).ThenInclude(p => p.Products)
+                .Include(p => p.Ratings)
+                .ToArray();
+
+            var productModels = products.Select(ProductModel.GetFromProduct);
+
+            return productModels;
         }
     }
 }
