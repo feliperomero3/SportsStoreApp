@@ -23,6 +23,12 @@ export class ProductService {
     );
   }
 
+  getProducts(): Observable<Product[]> {
+    return this.http.get<Product[]>(this.url, this.httpOptions).pipe(
+      catchError(this.handleError<Product[]>('getProducts'))
+    );
+  }
+
   /**
    * Handle Http operation that failed.
    * Let the app continue.

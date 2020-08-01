@@ -6,8 +6,9 @@ import { of } from 'rxjs';
 
 describe('AppComponent', () => {
   let mockProductService: any;
+
   beforeEach(async(() => {
-    mockProductService = jasmine.createSpyObj(['getProduct']);
+    mockProductService = jasmine.createSpyObj(['getProducts']);
     TestBed.configureTestingModule({
       imports: [
         RouterTestingModule
@@ -27,17 +28,19 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'Products Catalog'`, () => {
+  it('should have as title \'Products Catalog\'', () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;
     expect(app.title).toEqual('Products Catalog');
   });
 
-  it('should render title', () => {
+  it('should render title \'Products Catalog\'', () => {
     const fixture = TestBed.createComponent(AppComponent);
-    const product = { name: 'Kayak', description: 'A boat for one person', category: 'Water sports', price: '276' };
-    mockProductService.getProduct.and.returnValue(of(product));
+    const product = [{ name: 'Kayak', category: 'Water sports', price: '276' }];
+    mockProductService.getProducts.and.returnValue(of(product));
+
     fixture.detectChanges();
+
     const compiled = fixture.debugElement.nativeElement;
     expect(compiled.querySelector('h2').textContent).toContain('Products Catalog');
   });
