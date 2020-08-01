@@ -3,10 +3,14 @@ name: SportsStoreClientApp-CI
 on:
   push:
     branches: [ master ]
-    paths: 'ClientApp/**'
+    paths:
+    - 'ClientApp/**'
+    - '**/SportsStoreClientApp-CI.yml'
   pull_request:
     branches: [ master ]
-    paths: 'ClientApp/**'
+    paths:
+    - 'ClientApp/**'
+    - '**/SportsStoreClientApp-CI.yml'
 
 jobs:
   build:
@@ -15,7 +19,7 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v2
-    - name: Use Node.js ${{ env.NODE_VERSION }}
+    - name: Setup Node.js ${{ env.NODE_VERSION }}
       env:
         NODE_VERSION: '13.x'
       uses: actions/setup-node@v1
