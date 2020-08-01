@@ -32,9 +32,22 @@ namespace ServerApp.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<ProductModel> GetProducts()
+        public IEnumerable<ProductModel> GetProducts(string category, string search)
         {
-            var products = _applicationDbContext.Products
+            var query = _applicationDbContext.Products.AsQueryable();
+
+            if (!string.IsNullOrEmpty(category))
+            {
+                query = query.Where(p => p.Category.ToLower().Contains(category.ToLower()));
+            }
+
+            if (!string.IsNullOrEmpty(search))
+            {
+                query = query.Where(p => p.Name.ToLower().Contains(search.ToLower()) ||
+                                         p.Description.ToLower().Contains(search.ToLower()));
+            }
+
+            var products = query
                 .Include(p => p.Supplier).ThenInclude(p => p.Products)
                 .Include(p => p.Ratings)
                 .ToArray();
