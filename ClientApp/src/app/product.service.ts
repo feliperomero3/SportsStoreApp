@@ -23,8 +23,15 @@ export class ProductService {
     );
   }
 
-  getProducts(): Observable<Product[]> {
-    return this.http.get<Product[]>(this.url, this.httpOptions).pipe(
+  getProducts(category?: string, search?: string): Observable<Product[]> {
+    let url = this.url;
+    if (category) {
+      url += `?category=${category}`;
+    }
+    if (search) {
+      url += `&search=${search}`;
+    }
+    return this.http.get<Product[]>(url, this.httpOptions).pipe(
       catchError(this.handleError<Product[]>('getProducts'))
     );
   }

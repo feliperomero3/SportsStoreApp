@@ -11,8 +11,11 @@ export class AppComponent implements OnInit {
   title = 'Products Catalog';
   product: Product;
   products: Product[];
+  filter: { category?: string, search?: string };
 
-  constructor(private productService: ProductService) { }
+  constructor(private productService: ProductService) {
+    this.filter = { category: 'Football' };
+  }
 
   ngOnInit(): void {
     this.getProducts();
@@ -23,7 +26,8 @@ export class AppComponent implements OnInit {
   }
 
   getProducts(): void {
-    this.productService.getProducts().subscribe(products => this.products = products);
+    this.productService.getProducts(this.filter.category, this.filter.search)
+      .subscribe(products => this.products = products);
   }
 
 }
