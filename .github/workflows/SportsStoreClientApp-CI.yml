@@ -57,6 +57,9 @@ jobs:
     - name: Test
       working-directory: ClientApp
       run: npm run test
+    - name: Replace SF directories in coverage/lcov.info
+      working-directory: ClientApp
+      run: sed -i 's+/home/runner/work/SportsStoreApp/SportsStoreApp+/github/workspace+g' coverage/SportsStore/lcov.info
     - name: SonarCloud Scan
       uses: sonarsource/sonarcloud-github-action@v1.3
       env:
