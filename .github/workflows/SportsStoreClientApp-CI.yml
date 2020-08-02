@@ -45,6 +45,18 @@ jobs:
       uses: actions/checkout@v2
       with:
         fetch-depth: 0
+    - name: Setup Node.js ${{ env.NODE_VERSION }}
+      env:
+        NODE_VERSION: '13.x'
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ env.NODE_VERSION }}
+    - name: Clean install
+      working-directory: ClientApp
+      run: npm ci
+    - name: Test
+      working-directory: ClientApp
+      run: npm run test
     - name: SonarCloud Scan
       uses: sonarsource/sonarcloud-github-action@v1.3
       env:
