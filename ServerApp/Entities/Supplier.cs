@@ -14,11 +14,16 @@ namespace ServerApp.Entities
         {
         }
 
-        public Supplier(string name, string city, string state)
+        public Supplier(string name, string city, string state) : this()
         {
             Name = name;
             City = city;
             State = state;
+        }
+
+        public Supplier(long supplierId) : this()
+        {
+            SupplierId = supplierId;
         }
     }
 }

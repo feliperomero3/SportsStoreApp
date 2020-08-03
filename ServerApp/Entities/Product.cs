@@ -17,7 +17,7 @@ namespace ServerApp.Entities
         }
 
         public Product(string name, string description, string category, decimal price, Supplier supplier,
-            ICollection<Rating> ratings)
+            ICollection<Rating> ratings = null) : this()
         {
             Name = name;
             Category = category;
@@ -27,13 +27,13 @@ namespace ServerApp.Entities
             Ratings = ratings;
         }
 
-        public Product(string name, string description, string category, decimal price, Supplier supplier)
+        public Product(string name, string description, string category, decimal price, long supplierId) : this()
         {
             Name = name;
             Description = description;
             Category = category;
             Price = price;
-            Supplier = supplier;
+            Supplier = supplierId > 0 ? new Supplier(supplierId) : null;
         }
     }
 }
