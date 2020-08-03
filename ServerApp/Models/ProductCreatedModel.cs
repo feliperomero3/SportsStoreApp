@@ -1,36 +1,30 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using ServerApp.Entities;
 
 namespace ServerApp.Models
 {
-    public class ProductModel
+    public class ProductCreatedModel
     {
-        public long ProductId { get; set; }
+        public long ProductId { get; private set; }
         public string Name { get; set; }
         public string Description { get; set; }
         public string Category { get; set; }
         public decimal Price { get; set; }
-        public SupplierModel Supplier { get; set; }
-        public ICollection<RatingModel> Ratings { get; set; }
+        public long SupplierId { get; set; }
 
-        public static ProductModel GetFromProduct(Product product)
+        public static ProductCreatedModel FromProduct(Product product)
         {
             if (product == null) throw new ArgumentNullException(nameof(product));
 
-            var productModel = new ProductModel
+            return new ProductCreatedModel
             {
                 ProductId = product.ProductId,
                 Name = product.Name,
                 Description = product.Description,
                 Category = product.Category,
                 Price = product.Price,
-                Supplier = SupplierModel.GetFromSupplier(product.Supplier),
-                Ratings = product.Ratings.Select(RatingModel.GetFromRating).ToArray()
+                SupplierId = product.Supplier.SupplierId
             };
-
-            return productModel;
         }
     }
 }
