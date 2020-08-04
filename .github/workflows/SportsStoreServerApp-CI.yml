@@ -24,4 +24,4 @@ jobs:
     - name: Build
       run: dotnet build --no-restore --configuration Debug
     - name: Test
-      run: dotnet test --no-restore --verbosity normal
+      run: dotnet test --no-build --logger trx --collect "Code Coverage" --configuration Debug --verbosity normal
