@@ -3,10 +3,14 @@ name: SportsStoreServerApp-CI
 on:
   push:
     branches: [ master ]
-    paths: 'ServerApp/**'
+    paths:
+    - 'ServerApp/**'
+    - '**/SportsStoreServerApp-CI.yml'
   pull_request:
     branches: [ master ]
-    paths: 'ServerApp/**'
+    paths:
+    - 'ServerApp/**'
+    - '**/SportsStoreServerApp-CI.yml'
 
 jobs:
   build:
