@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace ServerApp.Entities
 {
@@ -12,6 +13,7 @@ namespace ServerApp.Entities
 
         private Supplier()
         {
+            Products = new Collection<Product>();
         }
 
         public Supplier(string name, string city, string state) : this()

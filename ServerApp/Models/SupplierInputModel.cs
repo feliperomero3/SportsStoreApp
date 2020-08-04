@@ -6,14 +6,14 @@ namespace ServerApp.Models
     public class SupplierInputModel
     {
         [Required]
-        public string Name { get; private set; }
+        public string Name { get; set; }
 
         [Required]
-        public string City { get; private set; }
+        public string City { get; set; }
 
         [Required]
         [StringLength(2, MinimumLength = 2)]
-        public string State { get; private set; }
+        public string State { get; set; }
 
         public static Supplier ToSupplier(SupplierInputModel supplier)
         {
