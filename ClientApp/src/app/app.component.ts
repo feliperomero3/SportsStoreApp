@@ -14,7 +14,7 @@ export class AppComponent implements OnInit {
   filter: { category?: string, search?: string };
 
   constructor(private productService: ProductService) {
-    this.filter = { category: 'Football' };
+    this.filter = { category: '' };
   }
 
   ngOnInit(): void {
@@ -28,6 +28,13 @@ export class AppComponent implements OnInit {
   getProducts(): void {
     this.productService.getProducts(this.filter.category, this.filter.search)
       .subscribe(products => this.products = products);
+  }
+
+  createProduct() {
+    const newProduct = new Product(0, 'X-Ray Scuba Mask', 'Watersports',
+      'See what the fish are hiding', 49.99, this.products[0].supplier);
+
+    this.productService.createProduct(newProduct).subscribe(() => this.getProducts());
   }
 
 }
