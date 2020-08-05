@@ -14,6 +14,7 @@ namespace ServerApp.Entities
 
         private Product()
         {
+            Ratings = new List<Rating>();
         }
 
         public Product(string name, string description, string category, decimal price, Supplier supplier,

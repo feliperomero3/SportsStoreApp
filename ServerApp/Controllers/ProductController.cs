@@ -62,12 +62,7 @@ namespace ServerApp.Controllers
         {
             var product = ProductInputModel.ToProduct(productModel);
 
-            if (product.Supplier != null)
-            {
-                _applicationDbContext.Attach(product.Supplier);
-            }
-
-            _applicationDbContext.Add(product);
+            _applicationDbContext.Attach(product);
             _applicationDbContext.SaveChanges();
 
             var productToReturn = ProductCreatedModel.FromProduct(product);
