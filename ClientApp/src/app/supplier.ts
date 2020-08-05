@@ -6,6 +6,6 @@ export class Supplier {
     public name: string,
     public city: string,
     public state: string,
-    public products: Product[]) {
+    public products?: Product[]) {
   }
 }

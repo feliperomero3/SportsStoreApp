@@ -1,11 +1,13 @@
 import { TestBed, async } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
+import { of } from 'rxjs';
 import { AppComponent } from './app.component';
 import { ProductService } from './product.service';
-import { of } from 'rxjs';
+import { SupplierService } from './supplier.service';
 
 describe('AppComponent', () => {
   let mockProductService: any;
+  const mockSupplierService: any = {};
 
   beforeEach(async(() => {
     mockProductService = jasmine.createSpyObj(['getProducts']);
@@ -17,7 +19,8 @@ describe('AppComponent', () => {
         AppComponent
       ],
       providers: [
-        { provide: ProductService, useValue: mockProductService }
+        { provide: ProductService, useValue: mockProductService },
+        { provide: SupplierService, useValue: mockSupplierService }
       ]
     }).compileComponents();
   }));

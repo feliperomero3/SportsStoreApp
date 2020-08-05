@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from './product.service';
 import { Product } from './product';
+import { Supplier } from './supplier';
+import { SupplierService } from './supplier.service';
 
 @Component({
   selector: 'app-root',
@@ -13,7 +15,7 @@ export class AppComponent implements OnInit {
   products: Product[];
   filter: { category?: string, search?: string };
 
-  constructor(private productService: ProductService) {
+  constructor(private productService: ProductService, private supplierService: SupplierService) {
     this.filter = { category: '' };
   }
 
@@ -35,6 +37,17 @@ export class AppComponent implements OnInit {
       'See what the fish are hiding', 49.99, this.products[0].supplier);
 
     this.productService.createProduct(newProduct).subscribe(() => this.getProducts());
+  }
+
+  createProductAndSupplier() {
+    const newSupplier = new Supplier(0, 'Rocket Shoe Corp', 'Boston', 'MA');
+
+    this.supplierService.createSupplier(newSupplier).subscribe(
+      (createdSupplier: Supplier) => {
+        const product = new Product(0, 'Rocket-Powered Shoes', 'Running', 'Set a new record', 100, createdSupplier);
+        this.productService.createProduct(product).subscribe(() => this.getProducts());
+      }
+    );
   }
 
 }
