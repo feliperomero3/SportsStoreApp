@@ -36,5 +36,13 @@ namespace ServerApp.Entities
             Price = price;
             Supplier = supplierId > 0 ? new Supplier(supplierId) : null;
         }
+
+        public void EditProduct(Product product)
+        {
+            Name = product.Name;
+            Description = product.Description;
+            Category = product.Category;
+            Price = product.Price;
+        }
     }
 }

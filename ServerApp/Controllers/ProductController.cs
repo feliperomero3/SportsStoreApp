@@ -69,5 +69,21 @@ namespace ServerApp.Controllers
 
             return CreatedAtAction(nameof(GetProduct), new { id = productToReturn.ProductId }, productToReturn);
         }
+
+        [HttpPut("{id}")]
+        public IActionResult ReplaceProduct(long id, ProductInputModel productModel)
+        {
+            var productToReplace = _applicationDbContext.Products
+                .Include(p => p.Supplier)
+                .FirstOrDefault(p => p.ProductId == id);
+
+            var product = ProductInputModel.ToProduct(productModel);
+
+            productToReplace?.EditProduct(product);
+
+            _applicationDbContext.SaveChanges();
+
+            return NoContent();
+        }
     }
 }
