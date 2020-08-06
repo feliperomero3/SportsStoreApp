@@ -25,6 +25,10 @@ Build the project using Visual Studio 2019.
 
 Hit F5 to start a debug session. The ASP.NET Core engine will start the Angular Development Server automatically.
 
+## Screen capture
+
+![SportsStore Home][screenshot-sportsstore]
+
 [SportsStoreClientApp-CI-status-badge]: https://github.com/feliperomero3/SportsStoreApp/workflows/SportsStoreClientApp-CI/badge.svg
 [SportsStoreClientApp-CI-status]: https://github.com/feliperomero3/SportsStoreApp/actions?query=workflow:SportsStoreClientApp-CI
 [Quality-Gate-Status-badge]: https://sonarcloud.io/api/project_badges/measure?project=feliperomero3_SportsStoreApp_ClientApp&metric=alert_status
@@ -34,3 +38,4 @@ Hit F5 to start a debug session. The ASP.NET Core engine will start the Angular 
 [ServerApp-CI-status]: https://dev.azure.com/feliperomeromx/Projects/_build/latest?definitionId=10&branchName=master
 [ServerApp-Quality-Gate-status-badge]: https://sonarcloud.io/api/project_badges/measure?project=feliperomero3_SportsStoreApp_ServerApp&metric=alert_status
 [ServerApp-Quality-Gate-status]: https://sonarcloud.io/dashboard?id=feliperomero3_SportsStoreApp_ServerApp
+[screenshot-sportsstore]: .github\assets\screenshot-sportsstore.png
