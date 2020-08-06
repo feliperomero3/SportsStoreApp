@@ -29,7 +29,7 @@ steps:
     organization: 'feliperomero3'
     scannerMode: 'MSBuild'
     projectKey: 'feliperomero3_SportsStoreApp_ServerApp'
-    projectName: 'SportsStore'
+    projectName: 'SportsStoreApp_ServerApp'
 
 - task: DotNetCoreCLI@2
   displayName: 'Build'
