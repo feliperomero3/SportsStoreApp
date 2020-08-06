@@ -1,5 +1,12 @@
 trigger:
-- master
+  branches:
+    include:
+    - master
+  paths:
+    include:
+    - ServerApp/*
+    - azure-pipelines.yml
+    - SportsStoreApp.sln
 
 pool:
   vmImage: 'windows-latest'
