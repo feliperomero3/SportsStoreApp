@@ -17,13 +17,24 @@ The Application is one part Angular and other part ASP.NET Core MVC 3.
 - Node 14.x
 - Angular 8.x
 
-## How to build
+## Getting started
 
-Build the project using Visual Studio 2019.
+````cmd
+git clone https://github.com/feliperomero3/SportsStoreApp.git
+cd SportsStoreApp\ClientApp
+npm install
+cd ..
+dotnet build
+dotnet run --project ServerApp\ServerApp.csproj
+````
 
-## How to run
+Open <https://localhost:5001> on your favorite web browser
 
-Hit F5 to start a debug session. The ASP.NET Core engine will start the Angular Development Server automatically.
+## How to debug
+
+Open the solution file and hit F5 to start a debug session. The ASP.NET Core engine will start the Angular Development Server automatically (go through [Getting started](#getting-started) section first).
+
+[Getting started](#getting-started)
 
 ## Screen capture
 
