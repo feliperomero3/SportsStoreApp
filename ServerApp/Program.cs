@@ -17,19 +17,24 @@ namespace ServerApp
             {
                 var services = scope.ServiceProvider;
 
-                try
+                var environment = services.GetRequiredService<IWebHostEnvironment>();
+
+                if (environment.IsDevelopment())
                 {
-                    var context = services.GetRequiredService<ApplicationDbContext>();
+                    try
+                    {
+                        var context = services.GetRequiredService<ApplicationDbContext>();
 
-                    ApplicationDbContextSeedData.SeedDatabase(context);
-                }
-                catch (SqlException e)
-                {
-                    var logger = services.GetRequiredService<ILogger<Program>>();
+                        ApplicationDbContextSeedData.SeedDatabase(context);
+                    }
+                    catch (SqlException e)
+                    {
+                        var logger = services.GetRequiredService<ILogger<Program>>();
 
-                    logger.LogError(e, "An error occurred creating the database.");
+                        logger.LogError(e, "An error occurred creating the database.");
 
-                    throw;
+                        throw;
+                    }
                 }
             }
 
