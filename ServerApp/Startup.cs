@@ -30,6 +30,8 @@ namespace ServerApp
             {
                 options.SwaggerDoc("v1", new OpenApiInfo { Title = "SportsStore API", Version = "v1" });
             });
+
+            services.AddHealthChecks();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -54,6 +56,7 @@ namespace ServerApp
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapHealthChecks("/healthcheck");
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
