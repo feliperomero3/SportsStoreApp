@@ -46,8 +46,6 @@ namespace ServerApp.IntegrationTests.Controllers
         [Fact]
         public async Task CreateProduct_returns_CreatedResult()
         {
-            var httpClient = _factory.CreateClientWithDatabaseSetup(DatabaseHelper.ResetTestDatabase);
-
             var product = new ProductInputModel
             {
                 Name = "Head Marlin Splash Snorkel",
@@ -57,12 +55,47 @@ namespace ServerApp.IntegrationTests.Controllers
                 SupplierId = 1
             };
 
-            var response = await httpClient.PostAsJsonAsync("", product);
+            var response = await _httpClient.PostAsJsonAsync("", product);
 
-            //var responseContent = await response.Content.ReadAsStringAsync();
+            response.EnsureSuccessStatusCode();
+
+            var createdProduct = await response.Content.ReadFromJsonAsync<ProductModel>();
 
             Assert.Equal(HttpStatusCode.Created, response.StatusCode);
-            Assert.Equal("https://localhost:5001/api/products/10", response.Headers.Location.ToString());
+            Assert.Equal($"https://localhost:5001/api/products/{createdProduct.ProductId}",
+                response.Headers.Location.ToString());
+        }
+
+        [Fact]
+        public async Task ReplaceProduct_returns_NoContentResult()
+        {
+            var product = await _httpClient.GetFromJsonAsync<ProductModel>("1");
+
+            product.Name += " Modified";
+            product.Description += " Modified";
+            product.Category += " Modified";
+            product.Price *= 2M;
+
+            var productModified = new ProductInputModel
+            {
+                Name = product.Name,
+                Description = product.Description,
+                Category = product.Category,
+                Price = product.Price,
+                SupplierId = product.Supplier.SupplierId
+            };
+
+            var response = await _httpClient.PutAsJsonAsync("1", productModified);
+
+            response.EnsureSuccessStatusCode();
+
+            var modifiedProduct = await _httpClient.GetFromJsonAsync<ProductModel>("1");
+
+            Assert.Equal(HttpStatusCode.NoContent, response.StatusCode);
+            Assert.Equal(product.Name, modifiedProduct.Name);
+            Assert.Equal(product.Description, modifiedProduct.Description);
+            Assert.Equal(product.Category, modifiedProduct.Category);
+            Assert.Equal(product.Price, modifiedProduct.Price);
         }
     }
 }
