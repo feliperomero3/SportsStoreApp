@@ -35,5 +35,11 @@ namespace ServerApp.IntegrationTests.Helpers
 
             context.SaveChanges();
         }
+
+        public static void ResetTestDatabase(ApplicationDbContext context)
+        {
+            context.Database.EnsureDeleted();
+            context.Database.EnsureCreated();
+        }
     }
 }
