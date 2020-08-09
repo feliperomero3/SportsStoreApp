@@ -39,7 +39,7 @@ namespace ServerApp.IntegrationTests.Helpers
         public static void ResetTestDatabase(ApplicationDbContext context)
         {
             context.Database.EnsureDeleted();
-            context.Database.EnsureCreated();
+            SeedTestDatabase(context);
         }
     }
 }
