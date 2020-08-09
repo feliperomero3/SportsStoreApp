@@ -1,9 +1,10 @@
 ﻿using System;
+using System.Net;
 using System.Net.Http;
 using System.Net.Http.Json;
 using System.Threading.Tasks;
 using ServerApp.IntegrationTests.Helpers;
-using ServerApp.IntegrationTests.Models;
+using ServerApp.Models;
 using Xunit;
 
 namespace ServerApp.IntegrationTests.Controllers
@@ -21,7 +22,7 @@ namespace ServerApp.IntegrationTests.Controllers
         }
 
         [Fact]
-        public async Task GetProduct_returns_expected_Product()
+        public async Task GetProduct_returns_Product()
         {
             var expectedProduct = new ProductModel { ProductId = 1, Name = "Kayak" };
 
@@ -32,7 +33,7 @@ namespace ServerApp.IntegrationTests.Controllers
         }
 
         [Fact]
-        public async Task GetProducts_returns_expected_Products_collection()
+        public async Task GetProducts_returns_Products_collection()
         {
             var httpClient = _factory.CreateClientWithDatabaseSetup(DatabaseHelper.ResetTestDatabase);
 
@@ -40,6 +41,28 @@ namespace ServerApp.IntegrationTests.Controllers
 
             Assert.NotNull(products);
             Assert.Equal(9, products.Length);
+        }
+
+        [Fact]
+        public async Task CreateProduct_returns_CreatedResult()
+        {
+            var httpClient = _factory.CreateClientWithDatabaseSetup(DatabaseHelper.ResetTestDatabase);
+
+            var product = new ProductInputModel
+            {
+                Name = "Head Marlin Splash Snorkel",
+                Description = "Silicone snorkel with semi-dry top",
+                Category = "Watersports",
+                Price = 14.24M,
+                SupplierId = 1
+            };
+
+            var response = await httpClient.PostAsJsonAsync("", product);
+
+            //var responseContent = await response.Content.ReadAsStringAsync();
+
+            Assert.Equal(HttpStatusCode.Created, response.StatusCode);
+            Assert.Equal("https://localhost:5001/api/products/10", response.Headers.Location.ToString());
         }
     }
 }

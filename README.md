@@ -34,8 +34,6 @@ Open <https://localhost:5001> on your favorite web browser
 
 Open the solution file and hit F5 to start a debug session. The ASP.NET Core engine will start the Angular Development Server automatically (go through [Getting started](#getting-started) section first).
 
-[Getting started](#getting-started)
-
 ## Screen capture
 
 ![SportsStore Home][screenshot-sportsstore]

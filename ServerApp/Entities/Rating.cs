@@ -10,7 +10,7 @@
         {
         }
 
-        public Rating(int stars)
+        public Rating(int stars) : this()
         {
             Stars = stars;
         }
