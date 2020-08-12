@@ -30,6 +30,11 @@ steps:
     feedsToUse: 'select'
     verbosityRestore: 'Minimal' 
 
+- task: CmdLine@2
+  inputs:
+    script: 'dotnet libman restore'
+    workingDirectory: 'ServerApp'
+
 - task: SonarCloudPrepare@1
   displayName: Prepare SonarCloud analysis
   inputs:
