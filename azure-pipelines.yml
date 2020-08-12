@@ -31,8 +31,11 @@ steps:
     verbosityRestore: 'Minimal' 
 
 - task: CmdLine@2
+  displayName: 'Libman'
   inputs:
-    script: 'dotnet libman restore'
+    script: |
+      dotnet tool restore
+      dotnet libman restore
     workingDirectory: 'ServerApp'
 
 - task: SonarCloudPrepare@1
