@@ -60,7 +60,8 @@ namespace ServerApp.Controllers
         [HttpPost]
         public IActionResult CreateProduct(ProductInputModel productModel)
         {
-            var product = ProductInputModel.ToProduct(productModel);
+            var supplier = _applicationDbContext.Suppliers.Find(productModel.SupplierId);
+            var product = ProductInputModel.ToProduct(productModel, supplier);
 
             _applicationDbContext.Attach(product);
             _applicationDbContext.SaveChanges();
@@ -73,13 +74,12 @@ namespace ServerApp.Controllers
         [HttpPut("{id}")]
         public IActionResult ReplaceProduct(long id, ProductInputModel productModel)
         {
-            var productToReplace = _applicationDbContext.Products
-                .Include(p => p.Supplier)
-                .FirstOrDefault(p => p.ProductId == id);
+            var productToReplace = _applicationDbContext.Products.Find(id);
+            var supplier = _applicationDbContext.Suppliers.Find(productModel.SupplierId);
 
-            var product = ProductInputModel.ToProduct(productModel);
+            var product = ProductInputModel.ToProduct(productModel, supplier);
 
-            productToReplace?.EditProduct(product);
+            productToReplace.EditProduct(product);
 
             _applicationDbContext.SaveChanges();
 

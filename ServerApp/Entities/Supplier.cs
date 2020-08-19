@@ -23,11 +23,6 @@ namespace ServerApp.Entities
             State = state;
         }
 
-        public Supplier(long supplierId) : this()
-        {
-            SupplierId = supplierId;
-        }
-
         public void Replace(Supplier supplier)
         {
             Name = supplier.Name;

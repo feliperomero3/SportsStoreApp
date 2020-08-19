@@ -28,15 +28,6 @@ namespace ServerApp.Entities
             Ratings = ratings;
         }
 
-        public Product(string name, string description, string category, decimal price, long supplierId) : this()
-        {
-            Name = name;
-            Description = description;
-            Category = category;
-            Price = price;
-            Supplier = supplierId > 0 ? new Supplier(supplierId) : null;
-        }
-
         public void EditProduct(Product product)
         {
             Name = product.Name;

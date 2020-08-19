@@ -23,11 +23,12 @@ namespace ServerApp.Models
         [Range(typeof(long), "1", "9223372036854775807", ErrorMessage = "SupplierId must be at least 1")]
         public long SupplierId { get; set; }
 
-        public static Product ToProduct(ProductInputModel product)
+        public static Product ToProduct(ProductInputModel product, Supplier supplier)
         {
             if (product == null) throw new ArgumentNullException(nameof(product));
+            if (supplier == null) throw new ArgumentNullException(nameof(supplier));
 
-            return new Product(product.Name, product.Description, product.Category, product.Price, product.SupplierId);
+            return new Product(product.Name, product.Description, product.Category, product.Price, supplier);
         }
     }
 }
