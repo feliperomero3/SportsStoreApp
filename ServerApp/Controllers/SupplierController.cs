@@ -55,5 +55,19 @@ namespace ServerApp.Controllers
 
             return CreatedAtAction(nameof(GetSupplier), new { id = supplierToReturn.SupplierId }, supplierToReturn);
         }
+
+        [HttpPut("{id}")]
+        public IActionResult ReplaceSupplier(long id, SupplierInputModel supplierModel)
+        {
+            var supplierToReplace = _applicationDbContext.Suppliers.Find(id);
+
+            var supplier = SupplierInputModel.ToSupplier(supplierModel);
+
+            supplierToReplace.Replace(supplier);
+
+            _applicationDbContext.SaveChanges();
+
+            return NoContent();
+        }
     }
 }
