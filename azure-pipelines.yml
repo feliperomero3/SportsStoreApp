@@ -46,6 +46,7 @@ steps:
     scannerMode: 'MSBuild'
     projectKey: 'feliperomero3_SportsStoreApp_ServerApp'
     projectName: 'SportsStoreApp_ServerApp'
+    projectVersion: '1.0'
 
 - task: DotNetCoreCLI@2
   displayName: 'Build'
