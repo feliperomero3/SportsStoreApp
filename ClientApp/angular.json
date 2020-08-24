@@ -52,7 +52,7 @@
                   "maximumError": "5mb"
                 },
                 {
-                  "type": "anyComponentStyle",
+                  "type": "anyScript",
                   "maximumWarning": "6kb",
                   "maximumError": "10kb"
                 }
@@ -120,6 +120,7 @@
           }
         }
       }
-    }},
+    }
+  },
   "defaultProject": "SportsStore"
 }
