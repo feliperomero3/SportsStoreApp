@@ -29,7 +29,7 @@ export class ProductService {
       url += `?category=${category}`;
     }
     if (search) {
-      url += `&search=${search}`;
+      url += category ? `&search=${search}` : `?search=${search}`;
     }
     return this.http.get<Product[]>(url, this.httpOptions).pipe(
       catchError(this.handleError<Product[]>('getProducts'))
