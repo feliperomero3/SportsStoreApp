@@ -10,7 +10,7 @@ describe('AppComponent', () => {
   const mockSupplierService: any = {};
 
   beforeEach(async(() => {
-    mockProductService = jasmine.createSpyObj(['getProduct', 'getProducts']);
+    mockProductService = jasmine.createSpyObj(['getProduct', 'getProducts', 'createProduct']);
     TestBed.configureTestingModule({
       imports: [
         RouterTestingModule
@@ -68,5 +68,17 @@ describe('AppComponent', () => {
     fixture.componentInstance.getProducts();
 
     expect(fixture.componentInstance.products.length).toBe(2);
+  });
+
+  it('should create a product', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const products = [{ name: 'Kayak', category: 'Water sports', price: '275' }];
+    mockProductService.getProducts.and.returnValue(of(products));
+    mockProductService.createProduct.and.returnValue(of({}));
+
+    fixture.componentInstance.getProducts();
+    fixture.componentInstance.createProduct();
+
+    expect(fixture.componentInstance.products.length).toBeGreaterThan(0);
   });
 });

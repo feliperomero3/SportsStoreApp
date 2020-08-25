@@ -32,7 +32,7 @@ export class AppComponent implements OnInit {
       .subscribe(products => this.products = products);
   }
 
-  createProduct() {
+  createProduct(): void {
     const newProduct = new Product(0, 'X-Ray Scuba Mask', 'Watersports',
       'See what the fish are hiding', 49.99, this.products[0].supplier);
 
