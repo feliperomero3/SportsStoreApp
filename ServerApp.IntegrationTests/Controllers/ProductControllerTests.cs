@@ -29,6 +29,7 @@ namespace ServerApp.IntegrationTests.Controllers
             var product = await _httpClient.GetFromJsonAsync<ProductModel>("1");
 
             Assert.NotNull(product);
+            Assert.Equal(expectedProduct.ProductId, product.ProductId);
             Assert.Equal(expectedProduct.Name, product.Name);
         }
 
