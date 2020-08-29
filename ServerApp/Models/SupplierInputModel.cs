@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 using ServerApp.Entities;
 
 namespace ServerApp.Models
@@ -17,7 +18,21 @@ namespace ServerApp.Models
 
         public static Supplier ToSupplier(SupplierInputModel supplier)
         {
+            if (supplier == null) throw new ArgumentNullException(nameof(supplier));
+
             return new Supplier(supplier.Name, supplier.City, supplier.State);
+        }
+
+        public static SupplierInputModel FromSupplierModel(SupplierModel supplier)
+        {
+            if (supplier == null) throw new ArgumentNullException(nameof(supplier));
+
+            return new SupplierInputModel
+            {
+                Name = supplier.Name,
+                City = supplier.City,
+                State = supplier.State
+            };
         }
     }
 }

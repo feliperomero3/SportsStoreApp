@@ -45,7 +45,7 @@ namespace ServerApp.IntegrationTests.Controllers
         }
 
         [Fact]
-        public async Task CreateSupplier_returns_NoContentResult()
+        public async Task CreateSupplier_returns_CreatedResult()
         {
             var supplier = new SupplierInputModel { Name = "Splash Dudes", City = "San Jose", State = "CA" };
 
@@ -58,6 +58,29 @@ namespace ServerApp.IntegrationTests.Controllers
             Assert.Equal(HttpStatusCode.Created, response.StatusCode);
             Assert.Equal($"https://localhost:5001/api/suppliers/{createdSupplier.SupplierId}",
                 response.Headers.Location.ToString());
+        }
+
+        [Fact]
+        public async Task ReplaceSupplier_returns_NoContentResult()
+        {
+            var supplier = await _httpClient.GetFromJsonAsync<SupplierModel>("1");
+
+            supplier.Name = "Overton's";
+            supplier.City = "Greenville";
+            supplier.State = "NC";
+
+            var supplierModified = SupplierInputModel.FromSupplierModel(supplier);
+
+            var response = await _httpClient.PutAsJsonAsync("1", supplierModified);
+
+            response.EnsureSuccessStatusCode();
+
+            var modifiedSupplier = await _httpClient.GetFromJsonAsync<SupplierModel>("1");
+
+            Assert.Equal(HttpStatusCode.NoContent, response.StatusCode);
+            Assert.Equal(modifiedSupplier.Name, supplier.Name);
+            Assert.Equal(modifiedSupplier.City, supplier.City);
+            Assert.Equal(modifiedSupplier.State, supplier.State);
         }
     }
 }

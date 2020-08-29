@@ -23,7 +23,7 @@ namespace ServerApp.Entities
             State = state;
         }
 
-        public void Replace(Supplier supplier)
+        public void EditSupplier(Supplier supplier)
         {
             Name = supplier.Name;
             City = supplier.City;

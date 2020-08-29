@@ -63,7 +63,7 @@ namespace ServerApp.Controllers
 
             var supplier = SupplierInputModel.ToSupplier(supplierModel);
 
-            supplierToReplace.Replace(supplier);
+            supplierToReplace.EditSupplier(supplier);
 
             _applicationDbContext.SaveChanges();
 
