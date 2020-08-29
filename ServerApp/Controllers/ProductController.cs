@@ -74,12 +74,13 @@ namespace ServerApp.Controllers
         [HttpPut("{id}")]
         public IActionResult ReplaceProduct(long id, ProductInputModel productModel)
         {
-            var productToReplace = _applicationDbContext.Products.Find(id);
-            var supplier = _applicationDbContext.Suppliers.Find(productModel.SupplierId);
+            var productToReplace = _applicationDbContext.Products
+                .Include(p => p.Supplier)
+                .FirstOrDefault(p => p.ProductId == id);
 
-            var product = ProductInputModel.ToProduct(productModel, supplier);
+            var product = ProductInputModel.ToProduct(productModel, productToReplace?.Supplier);
 
-            productToReplace.EditProduct(product);
+            productToReplace?.EditProduct(product);
 
             _applicationDbContext.SaveChanges();
 
