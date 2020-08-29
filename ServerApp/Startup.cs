@@ -69,11 +69,14 @@ namespace ServerApp
                 options.SwaggerEndpoint("/swagger/v1/swagger.json", "SportsStore API");
             });
 
-            app.UseSpa(spa =>
+            if (env.IsDevelopment())
             {
-                spa.Options.SourcePath = "../ClientApp";
-                spa.UseAngularCliServer("start");
-            });
+                app.UseSpa(spa =>
+                {
+                    spa.Options.SourcePath = "../ClientApp";
+                    spa.UseAngularCliServer("start");
+                });
+            }
         }
     }
 }
