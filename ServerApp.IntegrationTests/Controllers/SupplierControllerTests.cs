@@ -69,7 +69,12 @@ namespace ServerApp.IntegrationTests.Controllers
             supplier.City = "Greenville";
             supplier.State = "NC";
 
-            var supplierModified = SupplierInputModel.FromSupplierModel(supplier);
+            var supplierModified = new SupplierInputModel
+            {
+                Name = supplier.Name,
+                City = supplier.City,
+                State = supplier.State
+            };
 
             var response = await _httpClient.PutAsJsonAsync("1", supplierModified);
 

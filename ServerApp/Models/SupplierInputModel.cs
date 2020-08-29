@@ -22,17 +22,5 @@ namespace ServerApp.Models
 
             return new Supplier(supplier.Name, supplier.City, supplier.State);
         }
-
-        public static SupplierInputModel FromSupplierModel(SupplierModel supplier)
-        {
-            if (supplier == null) throw new ArgumentNullException(nameof(supplier));
-
-            return new SupplierInputModel
-            {
-                Name = supplier.Name,
-                City = supplier.City,
-                State = supplier.State
-            };
-        }
     }
 }
