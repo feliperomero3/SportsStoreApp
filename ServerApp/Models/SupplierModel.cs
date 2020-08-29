@@ -13,7 +13,7 @@ namespace ServerApp.Models
         public string State { get; set; }
         public ICollection<SupplierProductModel> Products { get; set; }
 
-        public static SupplierModel GetFromSupplier(Supplier supplier)
+        public static SupplierModel FromSupplier(Supplier supplier)
         {
             if (supplier == null) throw new ArgumentNullException(nameof(supplier));
 
@@ -23,7 +23,7 @@ namespace ServerApp.Models
                 Name = supplier.Name,
                 City = supplier.City,
                 State = supplier.State,
-                Products = supplier.Products.Select(SupplierProductModel.GetFromProduct).ToArray()
+                Products = supplier.Products.Select(SupplierProductModel.FromProduct).ToArray()
             };
         }
     }

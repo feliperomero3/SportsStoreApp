@@ -8,7 +8,7 @@ namespace ServerApp.Models
         public long RatingId { get; set; }
         public int Stars { get; set; }
 
-        public static RatingModel GetFromRating(Rating rating)
+        public static RatingModel FromRating(Rating rating)
         {
             if (rating == null) throw new ArgumentNullException(nameof(rating));
 

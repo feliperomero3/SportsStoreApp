@@ -26,7 +26,7 @@ namespace ServerApp.Controllers
                 .Include(p => p.Ratings)
                 .FirstOrDefault(p => p.ProductId == id);
 
-            var productModel = ProductModel.GetFromProduct(product);
+            var productModel = ProductModel.FromProduct(product);
 
             return productModel;
         }
@@ -52,7 +52,7 @@ namespace ServerApp.Controllers
                 .Include(p => p.Ratings)
                 .ToArray();
 
-            var productModels = products.Select(ProductModel.GetFromProduct);
+            var productModels = products.Select(ProductModel.FromProduct);
 
             return productModels;
         }

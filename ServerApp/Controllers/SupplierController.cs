@@ -25,7 +25,7 @@ namespace ServerApp.Controllers
                 .Include(s => s.Products)
                 .FirstOrDefault(s => s.SupplierId == id);
 
-            var supplierModel = SupplierModel.GetFromSupplier(supplier);
+            var supplierModel = SupplierModel.FromSupplier(supplier);
 
             return supplierModel;
         }
@@ -38,7 +38,7 @@ namespace ServerApp.Controllers
                 .ThenInclude(p => p.Ratings)
                 .ToArray();
 
-            var supplierModels = suppliers.Select(SupplierModel.GetFromSupplier);
+            var supplierModels = suppliers.Select(SupplierModel.FromSupplier);
 
             return supplierModels;
         }
@@ -51,7 +51,7 @@ namespace ServerApp.Controllers
             _applicationDbContext.Add(supplier);
             _applicationDbContext.SaveChanges();
 
-            var supplierToReturn = SupplierModel.GetFromSupplier(supplier);
+            var supplierToReturn = SupplierModel.FromSupplier(supplier);
 
             return CreatedAtAction(nameof(GetSupplier), new { id = supplierToReturn.SupplierId }, supplierToReturn);
         }

@@ -15,7 +15,7 @@ namespace ServerApp.Models
         public SupplierModel Supplier { get; set; }
         public ICollection<RatingModel> Ratings { get; set; }
 
-        public static ProductModel GetFromProduct(Product product)
+        public static ProductModel FromProduct(Product product)
         {
             if (product == null) throw new ArgumentNullException(nameof(product));
 
@@ -26,8 +26,8 @@ namespace ServerApp.Models
                 Description = product.Description,
                 Category = product.Category,
                 Price = product.Price,
-                Supplier = SupplierModel.GetFromSupplier(product.Supplier),
-                Ratings = product.Ratings.Select(RatingModel.GetFromRating).ToArray()
+                Supplier = SupplierModel.FromSupplier(product.Supplier),
+                Ratings = product.Ratings.Select(RatingModel.FromRating).ToArray()
             };
 
             return productModel;

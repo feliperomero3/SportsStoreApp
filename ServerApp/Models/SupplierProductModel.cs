@@ -11,7 +11,7 @@ namespace ServerApp.Models
         public string Category { get; set; }
         public decimal Price { get; set; }
 
-        public static SupplierProductModel GetFromProduct(Product product)
+        public static SupplierProductModel FromProduct(Product product)
         {
             if (product == null) throw new ArgumentNullException(nameof(product));
 
