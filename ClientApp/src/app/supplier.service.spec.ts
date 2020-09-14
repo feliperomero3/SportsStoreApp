@@ -29,4 +29,18 @@ describe('SupplierService', () => {
     expect(req.request.url).toBe('api/suppliers');
     controller.verify();
   });
+
+  it('should handle an Http operation that failed', () => {
+    const service: SupplierService = TestBed.get(SupplierService);
+    const controller: HttpTestingController = TestBed.get(HttpTestingController);
+    const supplier = new Supplier(1, 'Splash Dudes', 'San Jose', 'CA');
+
+    service.createSupplier(supplier).subscribe(
+      data => expect(data).toBeUndefined(),
+      () => fail('should have handled the failed operation')
+    );
+
+    const req = controller.expectOne('api/suppliers');
+    req.flush('Bad Request', { status: 400, statusText: 'Bad request' });
+  });
 });
