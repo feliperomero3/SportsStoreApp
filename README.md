@@ -45,6 +45,12 @@ Open the solution file and hit F5 to start a debug session. The ASP.NET Core eng
 
 ![SportsStore Home][screenshot-sportsstore]
 
+## License
+
+[MIT License](LICENSE)
+
+Copyright (c) 2020 Felipe Romero
+
 [SportsStoreClientApp-CI-status-badge]: https://github.com/feliperomero3/SportsStoreApp/workflows/SportsStoreClientApp-CI/badge.svg
 [SportsStoreClientApp-CI-status]: https://github.com/feliperomero3/SportsStoreApp/actions?query=workflow:SportsStoreClientApp-CI
 [Coverage-Status-badge]: https://sonarcloud.io/api/project_badges/measure?project=feliperomero3_SportsStoreApp_ClientApp&metric=coverage
