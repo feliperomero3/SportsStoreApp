@@ -45,7 +45,7 @@ export class ProductService {
 
   replaceProduct(product: Product): Observable<Product> {
     const productModel = ProductInputModel.fromProduct(product);
-    return this.http.put<Product>(this.url, productModel, this.httpOptions).pipe(
+    return this.http.put<Product>(`${this.url}/${product.productId}`, productModel, this.httpOptions).pipe(
       catchError(this.handleError<Product>('replaceProduct'))
     );
   }

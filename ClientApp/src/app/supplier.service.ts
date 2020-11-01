@@ -25,7 +25,7 @@ export class SupplierService {
 
   replaceSupplier(supplier: Supplier): Observable<Supplier> {
     const supplierModel = SupplierInputModel.fromSupplier(supplier);
-    return this.http.put<Supplier>(this.url, supplierModel, this.httpOptions).pipe(
+    return this.http.put<Supplier>(`${this.url}/${supplier.supplierId}`, supplierModel, this.httpOptions).pipe(
       catchError(this.handleError<Supplier>('replaceSupplier'))
     );
   }

@@ -39,7 +39,7 @@ export class AppComponent implements OnInit {
     this.productService.createProduct(newProduct).subscribe(() => this.getProducts());
   }
 
-  createProductAndSupplier() {
+  createProductAndSupplier(): void {
     const newSupplier = new Supplier(0, 'Rocket Shoe Corp', 'Boston', 'MA');
 
     this.supplierService.createSupplier(newSupplier).subscribe(
@@ -48,6 +48,20 @@ export class AppComponent implements OnInit {
         this.productService.createProduct(product).subscribe(() => this.getProducts());
       }
     );
+  }
+
+  replaceProduct(): void {
+    const product = this.products[0];
+    product.name = `Modified ${product.name}`;
+    product.description = `Modified ${product.description}`;
+    product.category = `Modified ${product.category}`;
+    this.productService.replaceProduct(product).subscribe(() => this.getProducts());
+  }
+
+  replaceSupplier(): void {
+    const supplier = this.products[0].supplier;
+    supplier.name = `Modified ${supplier.name}`;
+    this.supplierService.replaceSupplier(supplier).subscribe(() => this.getProducts());
   }
 
 }
