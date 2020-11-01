@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import { Supplier } from './supplier';
+import { Supplier, SupplierInputModel } from './supplier';
 
 @Injectable({
   providedIn: 'root'
@@ -20,6 +20,13 @@ export class SupplierService {
   createSupplier(supplier: Supplier): Observable<Supplier> {
     return this.http.post<Supplier>(this.url, supplier, this.httpOptions).pipe(
       catchError(this.handleError<Supplier>('createSupplier'))
+    );
+  }
+
+  replaceSupplier(supplier: Supplier): Observable<Supplier> {
+    const supplierModel = SupplierInputModel.fromSupplier(supplier);
+    return this.http.put<Supplier>(this.url, supplierModel, this.httpOptions).pipe(
+      catchError(this.handleError<Supplier>('replaceSupplier'))
     );
   }
 

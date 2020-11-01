@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError } from 'rxjs/operators';
-import { Product, ProductCreateModel } from './product';
+import { Product, ProductInputModel as ProductInputModel } from './product';
 
 @Injectable({
   providedIn: 'root'
@@ -37,9 +37,16 @@ export class ProductService {
   }
 
   createProduct(product: Product): Observable<Product> {
-    const productModel = ProductCreateModel.fromProduct(product);
+    const productModel = ProductInputModel.fromProduct(product);
     return this.http.post<Product>(this.url, productModel, this.httpOptions).pipe(
       catchError(this.handleError<Product>('createProduct'))
+    );
+  }
+
+  replaceProduct(product: Product): Observable<Product> {
+    const productModel = ProductInputModel.fromProduct(product);
+    return this.http.put<Product>(this.url, productModel, this.httpOptions).pipe(
+      catchError(this.handleError<Product>('replaceProduct'))
     );
   }
 

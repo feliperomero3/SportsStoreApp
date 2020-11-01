@@ -14,14 +14,14 @@ export class Product {
   }
 }
 
-export class ProductCreateModel {
+export class ProductInputModel {
   name: string;
   description: string;
   category: string;
   price: number;
   supplierId: number;
 
-  static fromProduct(product: Product): ProductCreateModel {
+  static fromProduct(product: Product): ProductInputModel {
     return {
       name: product.name,
       description: product.description,
