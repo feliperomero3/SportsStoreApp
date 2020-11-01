@@ -25,6 +25,7 @@ namespace ServerApp
                     {
                         var context = services.GetRequiredService<ApplicationDbContext>();
 
+                        ApplicationDbContextInitializer.Initialize(context);
                         ApplicationDbContextSeedData.SeedDatabase(context);
                     }
                     catch (SqlException e)
