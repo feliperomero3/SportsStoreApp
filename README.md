@@ -1,12 +1,10 @@
 # SportsStoreApp
 
-[![SportsStoreClientApp-CI][SportsStoreClientApp-CI-status-badge]][SportsStoreClientApp-CI-status]
-[![Coverage][Coverage-Status-badge]][Coverage-Status]
-[![Quality Gate Status][Quality-Gate-Status-badge]][Quality-Gate-Status]
-
-[![SportsStoreServerApp-CI][ServerApp-CI-status-badge]][ServerApp-CI-status]
-[![Coverage][ServerApp-Coverage-status-badge]][ServerApp-Coverage-status]
-[![Quality Gate Status][ServerApp-Quality-Gate-status-badge]][ServerApp-Quality-Gate-status]
+| Angular App | ASP.NET Core MVC 3 |
+| --- | --- |
+| [![SportsStoreClientApp-CI][SportsStoreClientApp-CI-status-badge]][SportsStoreClientApp-CI-status] | [![SportsStoreServerApp-CI][ServerApp-CI-status-badge]][ServerApp-CI-status] |
+| [![Coverage][Coverage-Status-badge]][Coverage-Status] | [![Coverage][ServerApp-Coverage-status-badge]][ServerApp-Coverage-status] |
+| [![Quality Gate Status][Quality-Gate-Status-badge]][Quality-Gate-Status] | [![Quality Gate Status][ServerApp-Quality-Gate-status-badge]][ServerApp-Quality-Gate-status] |
 
 Based on the SportsStore Application built in ['Essential Angular for ASP.NET Core MVC 3 - A Practical Guide to Successfully Using Both in Your Projects'](https://www.apress.com/9781484229156) by Adam Freeman (Apress, 2019).
 
