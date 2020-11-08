@@ -75,10 +75,10 @@ steps:
     zipAfterPublish: false
 
 - task: PublishBuildArtifacts@1
-  displayName: Publish build artifacts
+  displayName: 'Publish artifacts'
   inputs:
     pathtoPublish: '$(Build.ArtifactStagingDirectory)'
-    artifactName: 'drop'
+    artifactName: '$(Build.DefinitionName)_$(Build.BuildNumber)'
 
 - task: SonarCloudPublish@1
   displayName: 'Publish SonarCloud analysis results'
