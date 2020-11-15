@@ -2,7 +2,7 @@
 
 | Angular App | ASP.NET Core MVC 3 |
 | --- | --- |
-| [![SportsStoreClientApp-CI][SportsStoreClientApp-CI-status-badge]][SportsStoreClientApp-CI-status] | [![SportsStoreServerApp-CI][ServerApp-CI-status-badge]][ServerApp-CI-status] |
+| [![ClientApp-CI][ClientApp-CI-status-badge]][ClientApp-CI-status] | [![ServerApp-CI][ServerApp-CI-status-badge]][ServerApp-CI-status] |
 | [![Coverage][Coverage-Status-badge]][Coverage-Status] | [![Coverage][ServerApp-Coverage-status-badge]][ServerApp-Coverage-status] |
 | [![Quality Gate Status][Quality-Gate-Status-badge]][Quality-Gate-Status] | [![Quality Gate Status][ServerApp-Quality-Gate-status-badge]][ServerApp-Quality-Gate-status] |
 
@@ -49,8 +49,8 @@ Open the solution file and hit F5 to start a debug session. The ASP.NET Core eng
 
 Copyright (c) 2020 Felipe Romero
 
-[SportsStoreClientApp-CI-status-badge]: https://github.com/feliperomero3/SportsStoreApp/workflows/SportsStoreClientApp-CI/badge.svg
-[SportsStoreClientApp-CI-status]: https://github.com/feliperomero3/SportsStoreApp/actions?query=workflow:SportsStoreClientApp-CI
+[ClientApp-CI-status-badge]: https://github.com/feliperomero3/SportsStoreApp/workflows/SportsStoreClientApp-CI/badge.svg
+[ClientApp-CI-status]: https://github.com/feliperomero3/SportsStoreApp/actions?query=workflow:SportsStoreClientApp-CI
 [Coverage-Status-badge]: https://sonarcloud.io/api/project_badges/measure?project=feliperomero3_SportsStoreApp_ClientApp&metric=coverage
 [Coverage-Status]: https://sonarcloud.io/dashboard?id=feliperomero3_SportsStoreApp_ClientApp
 [Quality-Gate-Status-badge]: https://sonarcloud.io/api/project_badges/measure?project=feliperomero3_SportsStoreApp_ClientApp&metric=alert_status
