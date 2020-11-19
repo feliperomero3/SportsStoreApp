@@ -28,7 +28,13 @@ namespace ServerApp
 
             services.AddSwaggerGen(options =>
             {
-                options.SwaggerDoc("v1", new OpenApiInfo { Title = "SportsStore API", Version = "v1" });
+                options.SwaggerDoc("v1",
+                    new OpenApiInfo
+                    {
+                        Title = "SportsStore API",
+                        Description = "Based on the SportsStore Application built in the Book 'Essential Angular for ASP.NET Core MVC 3' by Adam Freeman",
+                        Version = "v1"
+                    });
             });
 
             services.AddHealthChecks();
