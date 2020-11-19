@@ -30,5 +30,17 @@ namespace ServerApp.Models
 
             return new Product(product.Name, product.Description, product.Category, product.Price, supplier);
         }
+
+        public static ProductInputModel FromProduct(Product product)
+        {
+            return new ProductInputModel
+            {
+                Name = product.Name,
+                Description = product.Description,
+                Category = product.Category,
+                Price = product.Price,
+                SupplierId = product.Supplier.SupplierId
+            };
+        }
     }
 }

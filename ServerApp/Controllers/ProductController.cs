@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ServerApp.Data;
@@ -85,6 +86,36 @@ namespace ServerApp.Controllers
             _applicationDbContext.SaveChanges();
 
             return NoContent();
+        }
+
+        [HttpPatch("{id}")]
+        public IActionResult UpdateProduct(long id, JsonPatchDocument<ProductInputModel> patch)
+        {
+            var product = _applicationDbContext.Products
+                .Include(p => p.Supplier)
+                .FirstOrDefault(p => p.ProductId == id);
+
+            var productModel = ProductInputModel.FromProduct(product);
+
+            patch.ApplyTo(productModel);
+
+            if (!ModelState.IsValid || !TryValidateModel(productModel))
+            {
+                return BadRequest(ModelState);
+            }
+
+            if (product?.Supplier != null && product.Supplier.SupplierId != 0)
+            {
+                var updatedProduct = ProductInputModel.ToProduct(productModel, product.Supplier);
+
+                product.EditProduct(updatedProduct);
+
+                //_applicationDbContext.Attach(updatedProduct).State = EntityState.Modified;
+            }
+
+            _applicationDbContext.SaveChanges();
+
+            return Ok();
         }
     }
 }
