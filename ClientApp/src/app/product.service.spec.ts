@@ -63,17 +63,20 @@ describe('ProductService', () => {
     expect(req.request.urlWithParams).toBe('api/products?category=Water sports&search=Kayak');
   });
 
-  it('should set the correct URL to create a product', () => {
+  it('should create a product', () => {
     const service: ProductService = TestBed.get(ProductService);
     const controller: HttpTestingController = TestBed.get(HttpTestingController);
-    const supplier = new Supplier(1, 'Splash Dudes', 'San Jose', 'CA');
-    const product = new Product(0, 'Splash Snorkel', 'Silicone snorkel with semi-dry top', 'watersports',
-      14.49, supplier);
+    const product = new Product(0, 'Splash Snorkel', 'Silicone snorkel with semi-dry top', 'Water sports',
+      14.49, new Supplier(1, 'Splash Dudes', 'San Jose', 'CA'));
 
-    service.createProduct(product).subscribe();
+    service.createProduct(product).subscribe(
+      data => expect(data).toEqual(product, 'should return the newly created product'),
+      () => fail()
+    );
 
     const req = controller.expectOne('api/products');
-    expect(req.request.url).toBe('api/products');
+    expect(req.request.method).toEqual('POST');
+    req.flush(product);
     controller.verify();
   });
 });
