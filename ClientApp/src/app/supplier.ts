@@ -11,11 +11,9 @@ export class Supplier {
 }
 
 export class SupplierInputModel {
-  constructor(
-    public name: string,
-    public city: string,
-    public state: string) {
-  }
+  name: string;
+  city: string;
+  state: string;
 
   static fromSupplier(supplier: Supplier): SupplierInputModel {
     return {

@@ -21,7 +21,7 @@ describe('SupplierService', () => {
   it('should set the correct URL to create a supplier', () => {
     const service: SupplierService = TestBed.get(SupplierService);
     const controller: HttpTestingController = TestBed.get(HttpTestingController);
-    const supplier = new Supplier(1, 'Splash Dudes', 'San Jose', 'CA');
+    const supplier = new Supplier(0, 'Splash Dudes', 'San Jose', 'CA');
 
     service.createSupplier(supplier).subscribe();
 
@@ -30,10 +30,10 @@ describe('SupplierService', () => {
     controller.verify();
   });
 
-  it('should handle an Http operation that failed', () => {
+  it('should handle a create supplier operation that failed', () => {
     const service: SupplierService = TestBed.get(SupplierService);
     const controller: HttpTestingController = TestBed.get(HttpTestingController);
-    const supplier = new Supplier(1, 'Splash Dudes', 'San Jose', 'CA');
+    const supplier = new Supplier(0, 'Splash Dudes', 'San Jose', 'CA');
 
     service.createSupplier(supplier).subscribe(
       data => expect(data).toBeUndefined(),
@@ -41,6 +41,22 @@ describe('SupplierService', () => {
     );
 
     const req = controller.expectOne('api/suppliers');
-    req.flush('Bad Request', { status: 400, statusText: 'Bad request' });
+    req.flush({}, { status: 400, statusText: 'Bad request' });
+  });
+
+  it('should replace a supplier', () => {
+    const service: SupplierService = TestBed.get(SupplierService);
+    const controller: HttpTestingController = TestBed.get(HttpTestingController);
+    const supplier = new Supplier(1, 'Splash Dudes', 'San Jose', 'CA');
+
+    service.replaceSupplier(supplier).subscribe(
+      data => expect(data).toEqual(supplier, 'should return the replaced supplier'),
+      () => fail()
+    );
+
+    const req = controller.expectOne('api/suppliers/1');
+    expect(req.request.method).toEqual('PUT');
+    req.flush(supplier);
+    controller.verify();
   });
 });
