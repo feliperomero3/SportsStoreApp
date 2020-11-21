@@ -11,7 +11,7 @@ describe('AppComponent', () => {
 
   beforeEach(async(() => {
     mockProductService = jasmine.createSpyObj(['getProduct', 'getProducts', 'createProduct', 'replaceProduct']);
-    mockSupplierService = jasmine.createSpyObj(['createSupplier']);
+    mockSupplierService = jasmine.createSpyObj(['createSupplier', 'replaceSupplier']);
     TestBed.configureTestingModule({
       imports: [
         RouterTestingModule
@@ -112,5 +112,26 @@ describe('AppComponent', () => {
     fixture.componentInstance.replaceProduct();
 
     expect(mockProductService.replaceProduct).toHaveBeenCalledWith(replacedProduct);
+  });
+
+  it('should replace product\'s supplier', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const products = [{
+      name: 'Kayak',
+      description: 'A boat for one person',
+      category: 'Water sports',
+      price: '275',
+      supplier: { name: 'Splash Dudes' }
+    }];
+    const replacedSupplier = {
+      name: 'Modified Splash Dudes'
+    };
+    mockProductService.getProducts.and.returnValue(of(products));
+    mockSupplierService.replaceSupplier.and.returnValue(of(products[0].supplier));
+
+    fixture.detectChanges();
+    fixture.componentInstance.replaceSupplier();
+
+    expect(mockSupplierService.replaceSupplier).toHaveBeenCalledWith(replacedSupplier);
   });
 });
