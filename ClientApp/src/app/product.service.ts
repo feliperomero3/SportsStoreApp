@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import { Product, ProductInputModel as ProductInputModel } from './product';
+import { Product, ProductInputModel } from './product';
+import { handleError } from './servicehelper';
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +20,7 @@ export class ProductService {
 
   getProduct(id: number): Observable<Product> {
     return this.http.get<Product>(`${this.url}/${id}`, this.httpOptions).pipe(
-      catchError(this.handleError<Product>('getProduct'))
+      catchError(handleError<Product>('getProduct'))
     );
   }
 
@@ -32,37 +33,21 @@ export class ProductService {
       url += category ? `&search=${search}` : `?search=${search}`;
     }
     return this.http.get<Product[]>(url, this.httpOptions).pipe(
-      catchError(this.handleError<Product[]>('getProducts'))
+      catchError(handleError<Product[]>('getProducts'))
     );
   }
 
   createProduct(product: Product): Observable<Product> {
     const productModel = ProductInputModel.fromProduct(product);
     return this.http.post<Product>(this.url, productModel, this.httpOptions).pipe(
-      catchError(this.handleError<Product>('createProduct'))
+      catchError(handleError<Product>('createProduct'))
     );
   }
 
   replaceProduct(product: Product): Observable<Product> {
     const productModel = ProductInputModel.fromProduct(product);
     return this.http.put<Product>(`${this.url}/${product.productId}`, productModel, this.httpOptions).pipe(
-      catchError(this.handleError<Product>('replaceProduct'))
+      catchError(handleError<Product>('replaceProduct'))
     );
-  }
-
-  /**
-   * Handle Http operation that failed.
-   * Let the app continue.
-   * @param operation - name of the operation that failed
-   * @param result - optional value to return as the observable result
-   */
-  private handleError<T>(operation = 'operation', result?: T): (error: any) => Observable<T> {
-    return (error: any): Observable<T> => {
-      console.log(operation);
-      console.error(error);
-
-      // Let the app keep running by returning an empty result.
-      return of(result);
-    };
   }
 }

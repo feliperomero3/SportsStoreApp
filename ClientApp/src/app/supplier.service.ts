@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { Supplier, SupplierInputModel } from './supplier';
+import { handleError } from './servicehelper';
 
 @Injectable({
   providedIn: 'root'
@@ -19,30 +20,14 @@ export class SupplierService {
 
   createSupplier(supplier: Supplier): Observable<Supplier> {
     return this.http.post<Supplier>(this.url, supplier, this.httpOptions).pipe(
-      catchError(this.handleError<Supplier>('createSupplier'))
+      catchError(handleError<Supplier>('createSupplier'))
     );
   }
 
   replaceSupplier(supplier: Supplier): Observable<Supplier> {
     const supplierModel = SupplierInputModel.fromSupplier(supplier);
     return this.http.put<Supplier>(`${this.url}/${supplier.supplierId}`, supplierModel, this.httpOptions).pipe(
-      catchError(this.handleError<Supplier>('replaceSupplier'))
+      catchError(handleError<Supplier>('replaceSupplier'))
     );
-  }
-
-  /**
-   * Handle Http operation that failed.
-   * Let the app continue.
-   * @param operation - name of the operation that failed
-   * @param result - optional value to return as the observable result
-   */
-  private handleError<T>(operation = 'operation', result?: T): (error: any) => Observable<T> {
-    return (error: any): Observable<T> => {
-      console.log(operation);
-      console.error(error);
-
-      // Let the app keep running by returning an empty result.
-      return of(result);
-    };
   }
 }
