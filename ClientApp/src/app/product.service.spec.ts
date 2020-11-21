@@ -52,6 +52,17 @@ describe('ProductService', () => {
     expect(req.request.urlWithParams).toBe('api/products?search=Kayak');
   });
 
+  it('should set the correct URL to get products by category including a search term', () => {
+    const service: ProductService = TestBed.get(ProductService);
+    const controller: HttpTestingController = TestBed.get(HttpTestingController);
+
+    service.getProducts('Water sports', 'Kayak').subscribe();
+
+    const req = controller.expectOne('api/products?category=Water sports&search=Kayak');
+    controller.verify();
+    expect(req.request.urlWithParams).toBe('api/products?category=Water sports&search=Kayak');
+  });
+
   it('should set the correct URL to create a product', () => {
     const service: ProductService = TestBed.get(ProductService);
     const controller: HttpTestingController = TestBed.get(HttpTestingController);
