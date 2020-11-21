@@ -93,7 +93,7 @@ describe('ProductService', () => {
 
     const req = controller.expectOne('api/products/1');
     expect(req.request.method).toEqual('PUT');
-    req.flush(product, { status: 204, statusText: 'No Content' });
+    req.flush(product);
     controller.verify();
   });
 });
