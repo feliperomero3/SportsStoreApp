@@ -79,4 +79,21 @@ describe('ProductService', () => {
     req.flush(product);
     controller.verify();
   });
+
+  it('should replace a product', () => {
+    const service: ProductService = TestBed.get(ProductService);
+    const controller: HttpTestingController = TestBed.get(HttpTestingController);
+    const product = new Product(1, 'Splash Snorkel', 'Silicone snorkel with semi-dry top', 'Water sports',
+      14.49, new Supplier(1, 'Splash Dudes', 'San Jose', 'CA'));
+
+    service.replaceProduct(product).subscribe(
+      data => expect(data).toEqual(product, 'should return the replaced product'),
+      () => fail()
+    );
+
+    const req = controller.expectOne('api/products/1');
+    expect(req.request.method).toEqual('PUT');
+    req.flush(product, { status: 204, statusText: 'No Content' });
+    controller.verify();
+  });
 });
