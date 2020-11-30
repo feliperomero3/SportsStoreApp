@@ -60,7 +60,7 @@ steps:
   inputs:
     command: 'test'
     projects: '**/*Test*/*.csproj'
-    arguments: '--collect "Code Coverage"'
+    arguments: '--no-build --configuration $(buildConfiguration) --collect "Code Coverage"'
 
 - task: SonarCloudAnalyze@1
   displayName: 'Run SonarCloud analysis'
