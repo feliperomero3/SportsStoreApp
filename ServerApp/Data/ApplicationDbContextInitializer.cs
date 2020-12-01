@@ -1,6 +1,4 @@
-using ServerApp.Data;
-
-namespace ServerApp
+namespace ServerApp.Data
 {
     public static class ApplicationDbContextInitializer
     {
