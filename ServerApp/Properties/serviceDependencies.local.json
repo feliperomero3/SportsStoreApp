@@ -4,6 +4,7 @@
       "type": "secrets.user"
     },
     "mssql1": {
+      "resourceId": null,
       "type": "mssql.local",
       "connectionId": "DefaultConnection",
       "secretStore": null
