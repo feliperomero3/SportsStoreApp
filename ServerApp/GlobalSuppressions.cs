@@ -6,3 +6,4 @@
 using System.Diagnostics.CodeAnalysis;
 
 [assembly: SuppressMessage("Performance", "CA1822:Mark members as static", Justification = "This is the standard method signature included in the new project template", Scope = "member", Target = "~M:ServerApp.Startup.Configure(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Hosting.IWebHostEnvironment)")]
+[assembly: SuppressMessage("Design", "CA1052:Static holder types should be Static or NotInheritable", Justification = "@davidfowl: 'It's how console applications always worked.'", Scope = "type", Target = "~T:ServerApp.Program")]
