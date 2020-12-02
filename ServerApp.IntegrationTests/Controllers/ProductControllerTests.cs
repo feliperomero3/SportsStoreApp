@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Net;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Net.Http.Json;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.JsonPatch;
+using Newtonsoft.Json;
 using ServerApp.IntegrationTests.Helpers;
 using ServerApp.Models;
 using Xunit;
@@ -97,6 +100,28 @@ namespace ServerApp.IntegrationTests.Controllers
             Assert.Equal(product.Description, modifiedProduct.Description);
             Assert.Equal(product.Category, modifiedProduct.Category);
             Assert.Equal(product.Price, modifiedProduct.Price);
+        }
+
+        [Fact]
+        public async Task UpdateProduct_returns_updated_Productt()
+        {
+            var patch = new JsonPatchDocument<ProductInputModel>();
+
+            var patchDocument = patch.Replace(p => p.Name, "Modified Name");
+
+            var request = new HttpRequestMessage(HttpMethod.Patch, _httpClient.BaseAddress + "1")
+            {
+                Content = new StringContent(JsonConvert.SerializeObject(patchDocument))
+            };
+
+            request.Content.Headers.ContentType = new MediaTypeHeaderValue("application/json-patch+json");
+
+            var response = await _httpClient.SendAsync(request);
+
+            var modifiedProduct = await _httpClient.GetFromJsonAsync<ProductModel>("1");
+
+            Assert.Equal(HttpStatusCode.OK, response.StatusCode);
+            Assert.Equal("Modified Name", modifiedProduct.Name);
         }
     }
 }
