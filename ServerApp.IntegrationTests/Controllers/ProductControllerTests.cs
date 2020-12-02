@@ -103,7 +103,7 @@ namespace ServerApp.IntegrationTests.Controllers
         }
 
         [Fact]
-        public async Task UpdateProduct_returns_updated_Productt()
+        public async Task UpdateProduct_returns_NoContentResult()
         {
             var patch = new JsonPatchDocument<ProductInputModel>();
 
