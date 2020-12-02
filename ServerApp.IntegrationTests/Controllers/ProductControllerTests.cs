@@ -48,6 +48,27 @@ namespace ServerApp.IntegrationTests.Controllers
         }
 
         [Fact]
+        public async Task GetProducts_filter_by_category_returns_filtered_Products_collection()
+        {
+            var httpClient = _factory.CreateClientWithDatabaseSetup(DatabaseHelper.ResetTestDatabase);
+
+            var products = await httpClient.GetFromJsonAsync<ProductModel[]>("?category=Water");
+
+            Assert.NotNull(products);
+            Assert.Equal(2, products.Length);
+        }
+
+        [Fact]
+        public async Task GetProducts_search_returns_filtered_Products_collection()
+        {
+            var httpClient = _factory.CreateClientWithDatabaseSetup(DatabaseHelper.ResetTestDatabase);
+
+            var products = await httpClient.GetFromJsonAsync<ProductModel[]>("?search=boat");
+
+            Assert.Single(products);
+        }
+
+        [Fact]
         public async Task CreateProduct_returns_CreatedResult()
         {
             var product = new ProductInputModel
