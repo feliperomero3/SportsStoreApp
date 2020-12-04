@@ -6,7 +6,7 @@
 | [![Coverage][Coverage-Status-badge]][Coverage-Status] | [![Coverage][ServerApp-Coverage-status-badge]][ServerApp-Coverage-status] |
 | [![Quality Gate Status][Quality-Gate-Status-badge]][Quality-Gate-Status] | [![Quality Gate Status][ServerApp-Quality-Gate-status-badge]][ServerApp-Quality-Gate-status] |
 
-Based on the SportsStore Application built in ['Essential Angular for ASP.NET Core MVC 3 - A Practical Guide to Successfully Using Both in Your Projects'](https://www.apress.com/9781484229156) by Adam Freeman (Apress, 2019).
+Based on the SportsStore Application built in the Book ['Essential Angular for ASP.NET Core MVC 3 - A Practical Guide to Successfully Using Both in Your Projects'](https://www.apress.com/9781484229156) by Adam Freeman (Apress, 2019).
 
 The Application is one part Angular and other part ASP.NET Core MVC 3.
 
