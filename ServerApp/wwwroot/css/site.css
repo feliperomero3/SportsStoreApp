@@ -26,8 +26,6 @@ a { color: #0366d6; }
 /* Sticky footer styles
 -------------------------------------------------- */
 
-html { font-size: 14px; }
-
 @media (min-width: 768px) {
     html { font-size: 16px; }
 }
@@ -50,6 +48,7 @@ button.accept-policy {
 -------------------------------------------------- */
 
 html {
+    font-size: 14px;
     position: relative;
     min-height: 100%;
 }
