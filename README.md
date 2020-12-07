@@ -33,7 +33,7 @@ dotnet build
 dotnet run --project ServerApp\ServerApp.csproj
 ````
 
-Open <https://localhost:5001> on your favorite web browser
+Open <https://localhost:5001> on your favorite web browser. _It may take a while to start on first launch._
 
 ## How to debug
 
