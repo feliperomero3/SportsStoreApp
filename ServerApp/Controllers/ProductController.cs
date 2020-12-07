@@ -109,8 +109,6 @@ namespace ServerApp.Controllers
                 var updatedProduct = ProductInputModel.ToProduct(productModel, product.Supplier);
 
                 product.EditProduct(updatedProduct);
-
-                //_applicationDbContext.Attach(updatedProduct).State = EntityState.Modified;
             }
 
             _applicationDbContext.SaveChanges();
