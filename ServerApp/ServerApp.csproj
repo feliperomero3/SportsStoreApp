@@ -5,6 +5,10 @@
     <UserSecretsId>60b03b2b-9d7a-4f08-b84e-cee453754556</UserSecretsId>
   </PropertyGroup>
 
+  <PropertyGroup>
+    <NoWarn>1701;1702;S1118</NoWarn>
+  </PropertyGroup>
+
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.JsonPatch" Version="3.1.6" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.1.6" />
