@@ -19,9 +19,9 @@ The Application is one part Angular and other part ASP.NET Core MVC 3.
 
 ## Getting started
 
-1.	Clone the project
-2.	Open the solution file with Visual Studio 2019
-3.	Right click the solution node on the Solution Explorer tool window and click on 'Restore Client-Side Libraries'
+1. Clone the project
+2. Open the solution file with Visual Studio 2019
+3. Right click the solution node on the Solution Explorer tool window and click on 'Restore Client-Side Libraries'
 4. Open a command prompt at the root of the project and execute the following
 
 ````bash
