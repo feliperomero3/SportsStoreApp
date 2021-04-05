@@ -1,6 +1,6 @@
 # SportsStoreApp
 
-| Angular App | ASP.NET Core MVC 3 |
+| Angular | ASP.NET Core MVC 3 |
 | --- | --- |
 | [![ClientApp-CI][ClientApp-CI-status-badge]][ClientApp-CI-status] | [![ServerApp-CI][ServerApp-CI-status-badge]][ServerApp-CI-status] |
 | [![Coverage][Coverage-Status-badge]][Coverage-Status] | [![Coverage][ServerApp-Coverage-status-badge]][ServerApp-Coverage-status] |
