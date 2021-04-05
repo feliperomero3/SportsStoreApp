@@ -22,6 +22,8 @@ namespace ServerApp.Data
             modelBuilder.Entity<Product>().HasOne(p => p.Supplier)
                 .WithMany(s => s.Products).OnDelete(DeleteBehavior.SetNull);
 
+            modelBuilder.Entity<Payment>(builder => { builder.Property(p => p.Total).HasColumnType("decimal(8, 2)"); });
+
             base.OnModelCreating(modelBuilder);
         }
     }
