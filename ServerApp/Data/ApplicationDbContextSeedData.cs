@@ -1,4 +1,5 @@
-﻿using ServerApp.Entities;
+﻿using System.Linq;
+using ServerApp.Entities;
 
 namespace ServerApp.Data
 {
@@ -6,8 +7,12 @@ namespace ServerApp.Data
     {
         public static void SeedDatabase(ApplicationDbContext context)
         {
-            context.Database.EnsureDeleted();
             context.Database.EnsureCreated();
+
+            if (context.Suppliers.Any())
+            {
+                return; // Db has been seeded
+            }
 
             var s1 = new Supplier("Splash Dudes", "San Jose", "CA");
             var s2 = new Supplier("Football Town", "Chicago", "IL");
