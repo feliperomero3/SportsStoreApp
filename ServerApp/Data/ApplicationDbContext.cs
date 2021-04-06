@@ -11,6 +11,7 @@ namespace ServerApp.Data
 
         public DbSet<Product> Products { get; private set; }
         public DbSet<Supplier> Suppliers { get; private set; }
+        public DbSet<Order> Orders { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
