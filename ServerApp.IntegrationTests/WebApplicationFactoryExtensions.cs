@@ -33,7 +33,7 @@ namespace ServerApp.IntegrationTests
                     {
                         var logger = provider.GetRequiredService<ILogger<CustomWebApplicationFactory<Startup>>>();
 
-                        logger.LogError(e, "An error occurred seting up the test database for the test.");
+                        logger.LogError(e, "An error occurred setting up the test database for the test.");
 
                         throw;
                     }
