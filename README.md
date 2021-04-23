@@ -14,8 +14,8 @@ The Application is one part Angular and other part ASP.NET Core MVC 3.
 
 - .NET Core SDK 3.1.x
 - Visual Studio 2019 or alternative editor
-- Node 14.x
-- Angular 8.x
+- Node 12.x
+- Angular CLI 9.x
 
 ## Getting started
 
