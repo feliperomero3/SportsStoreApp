@@ -20,7 +20,7 @@ namespace ServerApp.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<Order> GetOrders()
+        public IEnumerable<OrderModel> GetOrders()
         {
             var orders = _applicationDbContext.Orders
                 .Include(o => o.Products)
@@ -29,7 +29,7 @@ namespace ServerApp.Controllers
 
             var orderModels = orders.Select(OrderModel.FromOrder);
 
-            return orders;
+            return orderModels;
         }
 
         [HttpPost("{id}")]
