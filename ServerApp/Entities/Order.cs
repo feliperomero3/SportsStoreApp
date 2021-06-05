@@ -11,7 +11,7 @@ namespace ServerApp.Entities
         public bool IsShipped { get; private set; }
         public ICollection<CartLine> Products { get; private set; }
 
-        public Order()
+        private Order()
         {
             Products = new List<CartLine>();
         }
