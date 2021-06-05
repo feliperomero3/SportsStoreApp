@@ -76,7 +76,9 @@ namespace ServerApp.Controllers
         {
             IEnumerable<long> ids = lines.Select(l => l.ProductId);
 
-            return _applicationDbContext.Products.Where(p => ids.Contains(p.ProductId))
+            return _applicationDbContext.Products
+                .Where(p => ids.Contains(p.ProductId))
+                .ToList()
                 .Select(p => lines.First(l => l.ProductId == p.ProductId).Quantity * p.Price)
                 .Sum();
         }

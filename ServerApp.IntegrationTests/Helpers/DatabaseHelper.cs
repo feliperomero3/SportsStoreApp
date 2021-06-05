@@ -21,8 +21,8 @@ namespace ServerApp.IntegrationTests.Helpers
             var r6 = new[] { new Rating(5), new Rating(4) };
             var r7 = new[] { new Rating(3) };
 
-            var p1 = new Product("Kayak", "A boat for one person", "Watersports", 275, s1, r1);
-            var p2 = new Product("Lifejacket", "Protective and fashionable", "Watersports", 48.95m, s1, r2);
+            var p1 = new Product("Kayak", "A boat for one person", "Water sports", 275, s1, r1);
+            var p2 = new Product("Life Jacket", "Protective and fashionable", "Water sports", 48.95m, s1, r2);
             var p3 = new Product("Football Ball", "FIFA-approved size and weight", "Football", 19.5m, s2, r3);
             var p4 = new Product("Corner Flags", "Give your pitch a professional touch", "Football", 34.95m, s2, r4);
             var p5 = new Product("Stadium", "Flat-packed 35,000-seat stadium", "Football", 79500, s2, r5);
@@ -32,6 +32,11 @@ namespace ServerApp.IntegrationTests.Helpers
             var p9 = new Product("Bling-Bling King", "Gold-plated, diamond-studded King", "Chess", 1200, s3);
 
             context.Products.AddRange(p1, p2, p3, p4, p5, p6, p7, p8, p9);
+
+            var o1 = new Order("O1", "Kingstown 421", new Payment("5921", "01/24", "999", 1250m),
+                new[] { new CartLine(p1.ProductId, 1), new CartLine(p2.ProductId, 1) });
+
+            context.Orders.Add(o1);
 
             context.SaveChanges();
         }

@@ -7,7 +7,7 @@ namespace ServerApp.Models
 {
     public class OrderModel
     {
-        public long OrderId { get; private set; }
+        public long OrderId { get; set; }
         public string Name { get; set; }
         public string Address { get; set; }
         public PaymentModel Payment { get; set; }

@@ -10,7 +10,7 @@ namespace ServerApp.Models
         public long ProductId { get; set; }
 
         [Required]
-        [Range(typeof(decimal), "1", "79228162514264337593543950335", ErrorMessage = "Quantity must be at least 1")]
+        [Range(typeof(int), "1", "999", ErrorMessage = "Quantity must be at least 1 and less then 999")]
         public int Quantity { get; set; }
 
         public CartLine ToCartLine()
