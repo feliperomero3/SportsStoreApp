@@ -144,5 +144,15 @@ namespace ServerApp.IntegrationTests.Controllers
             Assert.Equal(HttpStatusCode.OK, response.StatusCode);
             Assert.Equal("Modified Name", modifiedProduct.Name);
         }
+
+        [Fact]
+        public async Task DeleteProduct_deletes_the_Product_and_returns_NoContentResult()
+        {
+            var product = new ProductModel { ProductId = 1 };
+
+            var response = await _httpClient.DeleteAsync($"{product.ProductId}");
+
+            Assert.Equal(HttpStatusCode.NoContent, response.StatusCode);
+        }
     }
 }

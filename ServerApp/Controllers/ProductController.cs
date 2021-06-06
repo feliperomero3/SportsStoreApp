@@ -115,5 +115,16 @@ namespace ServerApp.Controllers
 
             return Ok();
         }
+
+        [HttpDelete("{id}")]
+        public IActionResult DeleteProduct(long id)
+        {
+            var product = _applicationDbContext.Products.Find(id);
+
+            _applicationDbContext.Products.Remove(product);
+            _applicationDbContext.SaveChanges();
+
+            return NoContent();
+        }
     }
 }
