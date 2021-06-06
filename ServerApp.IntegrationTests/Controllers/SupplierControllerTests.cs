@@ -65,7 +65,7 @@ namespace ServerApp.IntegrationTests.Controllers
         {
             var supplier = await _httpClient.GetFromJsonAsync<SupplierModel>("1");
 
-            supplier.Name = "Overton's";
+            supplier.Name = "Overtone's";
             supplier.City = "Greenville";
             supplier.State = "NC";
 
@@ -86,6 +86,16 @@ namespace ServerApp.IntegrationTests.Controllers
             Assert.Equal(modifiedSupplier.Name, supplier.Name);
             Assert.Equal(modifiedSupplier.City, supplier.City);
             Assert.Equal(modifiedSupplier.State, supplier.State);
+        }
+
+        [Fact]
+        public async Task DeleteSupplier_deletes_the_Supplier_and_returns_NoContentResult()
+        {
+            var supplier = new SupplierModel { SupplierId = 1 };
+
+            var response = await _httpClient.DeleteAsync($"{supplier.SupplierId}");
+
+            Assert.Equal(HttpStatusCode.NoContent, response.StatusCode);
         }
     }
 }

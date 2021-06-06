@@ -69,5 +69,16 @@ namespace ServerApp.Controllers
 
             return NoContent();
         }
+
+        [HttpDelete("{id}")]
+        public IActionResult DeleteSupplier(long id)
+        {
+            var suppplier = _applicationDbContext.Suppliers.Find(id);
+
+            _applicationDbContext.Suppliers.Remove(suppplier);
+            _applicationDbContext.SaveChanges();
+
+            return NoContent();
+        }
     }
 }
