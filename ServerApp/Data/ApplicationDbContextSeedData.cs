@@ -26,8 +26,8 @@ namespace ServerApp.Data
             var r6 = new[] { new Rating(5), new Rating(4) };
             var r7 = new[] { new Rating(3) };
 
-            var p1 = new Product("Kayak", "A boat for one person", "Watersports", 275, s1, r1);
-            var p2 = new Product("Lifejacket", "Protective and fashionable", "Watersports", 48.95m, s1, r2);
+            var p1 = new Product("Kayak", "A boat for one person", "Water sports", 275, s1, r1);
+            var p2 = new Product("Life Jacket", "Protective and fashionable", "Water sports", 48.95m, s1, r2);
             var p3 = new Product("Football Ball", "FIFA-approved size and weight", "Football", 19.5m, s2, r3);
             var p4 = new Product("Corner Flags", "Give your pitch a professional touch", "Football", 34.95m, s2, r4);
             var p5 = new Product("Stadium", "Flat-packed 35,000-seat stadium", "Football", 79500, s2, r5);
