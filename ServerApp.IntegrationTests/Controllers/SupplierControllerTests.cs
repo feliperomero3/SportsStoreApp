@@ -26,7 +26,9 @@ namespace ServerApp.IntegrationTests.Controllers
         {
             var expectedSupplier = new SupplierModel { SupplierId = 1, Name = "Splash Dudes" };
 
-            var supplier = await _httpClient.GetFromJsonAsync<SupplierModel>("1");
+            var httpClient = _factory.CreateClientWithDatabaseSetup(DatabaseHelper.ResetTestDatabase);
+
+            var supplier = await httpClient.GetFromJsonAsync<SupplierModel>("1");
 
             Assert.NotNull(supplier);
             Assert.Equal(expectedSupplier.SupplierId, supplier.SupplierId);
@@ -49,7 +51,7 @@ namespace ServerApp.IntegrationTests.Controllers
         {
             var supplier = new SupplierInputModel { Name = "Splash Dudes", City = "San Jose", State = "CA" };
 
-            var response = await _httpClient.PostAsJsonAsync("", supplier);
+            var response = await _httpClient.PostAsJsonAsync(string.Empty, supplier);
 
             response.EnsureSuccessStatusCode();
 
@@ -63,7 +65,9 @@ namespace ServerApp.IntegrationTests.Controllers
         [Fact]
         public async Task ReplaceSupplier_returns_NoContentResult()
         {
-            var supplier = await _httpClient.GetFromJsonAsync<SupplierModel>("1");
+            var httpClient = _factory.CreateClientWithDatabaseSetup(DatabaseHelper.ResetTestDatabase);
+
+            var supplier = await httpClient.GetFromJsonAsync<SupplierModel>("1");
 
             supplier.Name = "Overtone's";
             supplier.City = "Greenville";
@@ -80,7 +84,7 @@ namespace ServerApp.IntegrationTests.Controllers
 
             response.EnsureSuccessStatusCode();
 
-            var modifiedSupplier = await _httpClient.GetFromJsonAsync<SupplierModel>("1");
+            var modifiedSupplier = await httpClient.GetFromJsonAsync<SupplierModel>("1");
 
             Assert.Equal(HttpStatusCode.NoContent, response.StatusCode);
             Assert.Equal(modifiedSupplier.Name, supplier.Name);
