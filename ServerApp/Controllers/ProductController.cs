@@ -109,6 +109,10 @@ namespace ServerApp.Controllers
                 var updatedProduct = ProductInputModel.ToProduct(productModel, product.Supplier);
 
                 product.EditProduct(updatedProduct);
+
+                var supplier = _applicationDbContext.Suppliers.Find(productModel.SupplierId);
+
+                product.ReplaceSupplier(supplier);
             }
 
             _applicationDbContext.SaveChanges();

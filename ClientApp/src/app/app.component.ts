@@ -64,4 +64,11 @@ export class AppComponent implements OnInit {
     this.supplierService.replaceSupplier(supplier).subscribe(() => this.getProducts());
   }
 
+  updateProduct(): void {
+    const changes = new Map<string, any>();
+    changes.set('name', 'Green Kayak');
+    changes.set('supplierId', 2);
+    this.productService.updateProduct(1, changes).subscribe(() => this.getProducts());
+  }
+
 }

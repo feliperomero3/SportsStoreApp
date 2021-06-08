@@ -50,4 +50,12 @@ export class ProductService {
       catchError(handleError<Product>('replaceProduct'))
     );
   }
+
+  updateProduct(id: number, changes: Map<string, any>): Observable<{}> {
+    const patch = [];
+    changes.forEach((value, key) => patch.push({ op: 'replace', path: key, value }));
+    return this.http.patch(`${this.url}/${id}`, patch).pipe(
+      catchError(handleError<{}>('createSupplier')));
+  }
+
 }

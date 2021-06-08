@@ -35,5 +35,10 @@ namespace ServerApp.Entities
             Category = product.Category;
             Price = product.Price;
         }
+
+        internal void ReplaceSupplier(Supplier supplier)
+        {
+            Supplier = supplier;
+        }
     }
 }
