@@ -30,4 +30,10 @@ export class SupplierService {
       catchError(handleError<Supplier>('replaceSupplier'))
     );
   }
+
+  deleteSupplier(id: number): Observable<{}> {
+    return this.http.delete(`${this.url}/${id}`, this.httpOptions).pipe(
+      catchError(handleError<Supplier>('deleteSupplier'))
+    );
+  }
 }

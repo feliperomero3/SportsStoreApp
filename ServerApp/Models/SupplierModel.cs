@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using ServerApp.Entities;
 
@@ -15,7 +14,7 @@ namespace ServerApp.Models
 
         public static SupplierModel FromSupplier(Supplier supplier)
         {
-            if (supplier == null) throw new ArgumentNullException(nameof(supplier));
+            if (supplier == null) return null;
 
             return new SupplierModel
             {

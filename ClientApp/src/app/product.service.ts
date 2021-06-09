@@ -58,4 +58,9 @@ export class ProductService {
       catchError(handleError<{}>('createSupplier')));
   }
 
+  deleteProduct(id: number): Observable<{}> {
+    return this.http.delete(`${this.url}/${id}`, this.httpOptions).pipe(
+      catchError(handleError<Product>('deleteProduct'))
+    );
+  }
 }

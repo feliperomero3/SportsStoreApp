@@ -71,4 +71,12 @@ export class AppComponent implements OnInit {
     this.productService.updateProduct(1, changes).subscribe(() => this.getProducts());
   }
 
+  deleteProduct() {
+    this.productService.deleteProduct(1).subscribe(() => this.getProducts());
+  }
+
+  deleteSupplier() {
+    this.supplierService.deleteSupplier(2).subscribe(() => this.getProducts());
+  }
+
 }
