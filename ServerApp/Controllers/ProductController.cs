@@ -49,7 +49,7 @@ namespace ServerApp.Controllers
             }
 
             var products = query
-                .Include(p => p.Supplier).ThenInclude(p => p.Products)
+                .Include(p => p.Supplier)
                 .Include(p => p.Ratings)
                 .ToArray();
 
