@@ -55,7 +55,7 @@ export class ProductService {
     const patch = [];
     changes.forEach((value, key) => patch.push({ op: 'replace', path: key, value }));
     return this.http.patch(`${this.url}/${id}`, patch).pipe(
-      catchError(handleError<{}>('createSupplier')));
+      catchError(handleError<{}>('updateProduct')));
   }
 
   deleteProduct(id: number): Observable<{}> {
