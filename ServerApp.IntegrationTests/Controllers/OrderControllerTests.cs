@@ -64,7 +64,7 @@ namespace ServerApp.IntegrationTests.Controllers
 
             var response = await _httpClient.PostAsJsonAsync(string.Empty, order);
 
-            var createdOrder = await response.Content.ReadFromJsonAsync<dynamic>();
+            await response.Content.ReadFromJsonAsync<dynamic>();
 
             Assert.Equal(HttpStatusCode.OK, response.StatusCode);
         }
