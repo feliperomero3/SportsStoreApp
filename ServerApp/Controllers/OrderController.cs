@@ -32,6 +32,19 @@ namespace ServerApp.Controllers
             return orderModels;
         }
 
+        [HttpGet("{id}")]
+        public OrderModel GetOrder(long id)
+        {
+            var order = _applicationDbContext.Orders
+                .Include(o => o.Products)
+                .Include(o => o.Payment)
+                .FirstOrDefault(o => o.OrderId == id);
+
+            var orderModel = OrderModel.FromOrder(order);
+
+            return orderModel;
+        }
+
         [HttpPost("{id}")]
         public void MarkShipped(long id)
         {

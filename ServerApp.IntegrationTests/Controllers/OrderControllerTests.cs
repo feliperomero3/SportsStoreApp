@@ -30,15 +30,14 @@ namespace ServerApp.IntegrationTests.Controllers
             Assert.True(orders.Any());
         }
 
-        [Fact(Skip = "NotImplementedYet")]
+        [Fact]
         public async Task GetOrder_Returns_Order()
         {
-            var expectedOrder = new OrderModel { OrderId = 1 };
+            const long orderId = 1;
 
-            var order = await _httpClient.GetFromJsonAsync<OrderModel>("1");
+            var order = await _httpClient.GetFromJsonAsync<OrderModel>(orderId.ToString());
 
-            Assert.NotNull(order);
-            Assert.Equal(expectedOrder.OrderId, order.OrderId);
+            Assert.Equal(orderId, order.OrderId);
         }
 
         [Fact]
