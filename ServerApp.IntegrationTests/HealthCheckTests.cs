@@ -20,7 +20,9 @@ namespace ServerApp.IntegrationTests
         {
             var response = await _httpClient.GetAsync("/health");
 
-            response.EnsureSuccessStatusCode();
+            var result = response.EnsureSuccessStatusCode();
+
+            Assert.True(result.IsSuccessStatusCode);
         }
     }
 }
