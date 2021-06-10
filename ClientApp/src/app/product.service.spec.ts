@@ -115,4 +115,19 @@ describe('ProductService', () => {
     expect(req.request.method).toEqual('PATCH');
     controller.verify();
   });
+
+  it('should delete a product', () => {
+    const service: ProductService = TestBed.get(ProductService);
+    const controller: HttpTestingController = TestBed.get(HttpTestingController);
+    const productId = 1;
+
+    service.deleteProduct(productId).subscribe(
+      () => { },
+      () => fail()
+    );
+
+    const req = controller.expectOne('api/products/1');
+    expect(req.request.method).toEqual('DELETE');
+    controller.verify();
+  });
 });
