@@ -96,4 +96,23 @@ describe('ProductService', () => {
     req.flush(product);
     controller.verify();
   });
+
+  it('should update a product', () => {
+    const service: ProductService = TestBed.get(ProductService);
+    const controller: HttpTestingController = TestBed.get(HttpTestingController);
+    const product = new Product(1, 'Splash Snorkel', 'Silicone snorkel with semi-dry top', 'Water sports',
+      14.49, new Supplier(1, 'Splash Dudes', 'San Jose', 'CA'));
+
+    const changes = new Map<string, any>();
+    changes.set('name', 'Super Splash Snorkel');
+
+    service.updateProduct(product.productId, changes).subscribe(
+      () => { },
+      () => fail()
+    );
+
+    const req = controller.expectOne('api/products/1');
+    expect(req.request.method).toEqual('PATCH');
+    controller.verify();
+  });
 });
