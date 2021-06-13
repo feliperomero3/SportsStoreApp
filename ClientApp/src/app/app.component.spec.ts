@@ -10,7 +10,7 @@ describe('AppComponent', () => {
   let mockSupplierService: any;
 
   beforeEach(async(() => {
-    mockProductService = jasmine.createSpyObj(['getProduct', 'getProducts', 'createProduct', 'replaceProduct']);
+    mockProductService = jasmine.createSpyObj(['getProduct', 'getProducts', 'createProduct', 'replaceProduct', 'updateProduct']);
     mockSupplierService = jasmine.createSpyObj(['createSupplier', 'replaceSupplier']);
     TestBed.configureTestingModule({
       imports: [
@@ -133,5 +133,16 @@ describe('AppComponent', () => {
     fixture.componentInstance.replaceSupplier();
 
     expect(mockSupplierService.replaceSupplier).toHaveBeenCalledWith(replacedSupplier);
+  });
+
+  it('should call service to update a product', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    mockProductService.getProducts.and.returnValue(of([{}]));
+    mockProductService.updateProduct.and.returnValue(of());
+
+    fixture.detectChanges();
+    fixture.componentInstance.updateProduct();
+
+    expect(mockProductService.updateProduct).toHaveBeenCalled();
   });
 });
