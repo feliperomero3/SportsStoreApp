@@ -27,6 +27,7 @@ describe('SupplierService', () => {
 
     const req = controller.expectOne('api/suppliers');
     expect(req.request.url).toBe('api/suppliers');
+    expect(req.request.method).toEqual('POST');
     controller.verify();
   });
 

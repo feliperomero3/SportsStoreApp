@@ -9,8 +9,8 @@ import { Observable } from 'rxjs/internal/Observable';
  */
 export function handleError<T>(operation: string, result?: T): (error: any) => Observable<T> {
   return (error: any): Observable<T> => {
-    console.log(operation);
-    console.error(error);
+    console.log(`${operation} caused an error`);
+    console.error(JSON.stringify(error));
 
     // Let the app keep running by returning an empty result.
     return of(result);
