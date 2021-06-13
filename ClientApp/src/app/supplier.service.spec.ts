@@ -59,4 +59,20 @@ describe('SupplierService', () => {
     req.flush(supplier);
     controller.verify();
   });
+
+  it('should delete a supplier', () => {
+    const service: SupplierService = TestBed.get(SupplierService);
+    const controller: HttpTestingController = TestBed.get(HttpTestingController);
+    const supplierId = 1;
+
+    service.deleteSupplier(supplierId).subscribe(
+      () => { },
+      () => fail()
+    );
+
+    const req = controller.expectOne('api/suppliers/1');
+    expect(req.request.method).toEqual('DELETE');
+    controller.verify();
+  });
+
 });
