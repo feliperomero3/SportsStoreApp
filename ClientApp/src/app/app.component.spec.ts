@@ -12,7 +12,7 @@ describe('AppComponent', () => {
   beforeEach(async(() => {
     mockProductService = jasmine.createSpyObj([
       'getProduct', 'getProducts', 'createProduct', 'replaceProduct', 'updateProduct', 'deleteProduct']);
-    mockSupplierService = jasmine.createSpyObj(['createSupplier', 'replaceSupplier']);
+    mockSupplierService = jasmine.createSpyObj(['createSupplier', 'replaceSupplier', 'deleteSupplier']);
     TestBed.configureTestingModule({
       imports: [
         RouterTestingModule
@@ -156,5 +156,17 @@ describe('AppComponent', () => {
     fixture.componentInstance.deleteProduct();
 
     expect(mockProductService.deleteProduct).toHaveBeenCalled();
+  });
+
+  it('should call service to delete a supplier', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    mockProductService.getProducts.and.returnValue(of([{}]));
+    mockSupplierService.deleteSupplier.and.returnValue(of());
+
+    fixture.detectChanges();
+    fixture.componentInstance.deleteSupplier();
+
+    expect(mockSupplierService.deleteSupplier).toHaveBeenCalled();
+
   });
 });

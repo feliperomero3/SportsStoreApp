@@ -71,11 +71,11 @@ export class AppComponent implements OnInit {
     this.productService.updateProduct(1, changes).subscribe(() => this.getProducts());
   }
 
-  deleteProduct() {
+  deleteProduct(): void {
     this.productService.deleteProduct(1).subscribe(() => this.getProducts());
   }
 
-  deleteSupplier() {
+  deleteSupplier(): void {
     this.supplierService.deleteSupplier(2).subscribe(() => this.getProducts());
   }
 
