@@ -138,8 +138,8 @@ describe('AppComponent', () => {
 
   it('should call service to update a product', () => {
     const fixture = TestBed.createComponent(AppComponent);
-    mockProductService.getProducts.and.returnValue(of([{}]));
-    mockProductService.updateProduct.and.returnValue(of());
+    mockProductService.getProducts.and.returnValue(of([]));
+    mockProductService.updateProduct.and.returnValue(of(1));
 
     fixture.detectChanges();
     fixture.componentInstance.updateProduct();
@@ -150,7 +150,7 @@ describe('AppComponent', () => {
   it('should call service to delete a product', () => {
     const fixture = TestBed.createComponent(AppComponent);
     mockProductService.getProducts.and.returnValue(of([{}]));
-    mockProductService.deleteProduct.and.returnValue(of());
+    mockProductService.deleteProduct.and.returnValue(of(1));
 
     fixture.detectChanges();
     fixture.componentInstance.deleteProduct();
@@ -161,7 +161,7 @@ describe('AppComponent', () => {
   it('should call service to delete a supplier', () => {
     const fixture = TestBed.createComponent(AppComponent);
     mockProductService.getProducts.and.returnValue(of([{}]));
-    mockSupplierService.deleteSupplier.and.returnValue(of());
+    mockSupplierService.deleteSupplier.and.returnValue(of(1));
 
     fixture.detectChanges();
     fixture.componentInstance.deleteSupplier();
