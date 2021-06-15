@@ -24,14 +24,14 @@ The Application is one part Angular and other part ASP.NET Core MVC 3.
 3. Right click the solution node on the Solution Explorer tool window and click on 'Restore Client-Side Libraries'
 4. Open a command prompt at the root of the project and execute the following
 
-````bash
-cd ClientApp
-npm install
-cd ..
-dotnet restore
-dotnet build
-dotnet run --project ServerApp\ServerApp.csproj
-````
+    ````bash
+    cd ClientApp
+    npm install
+    cd ..
+    dotnet restore
+    dotnet build
+    dotnet run --project ServerApp\ServerApp.csproj
+    ````
 
 5. Open <https://localhost:5001> on your favorite web browser. _It may take a while to start on first launch._
 
