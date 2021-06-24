@@ -94,7 +94,8 @@ namespace SportsStore.IntegrationTests.Controllers
         [Fact]
         public async Task ReplaceProduct_returns_NoContentResult()
         {
-            var product = await _httpClient.GetFromJsonAsync<ProductModel>("1");
+            var httpClient = _factory.CreateClientWithDatabaseSetup(DatabaseHelper.ResetTestDatabase);
+            var product = await httpClient.GetFromJsonAsync<ProductModel>("1");
 
             product.Name += " Modified";
             product.Description += " Modified";
@@ -110,11 +111,11 @@ namespace SportsStore.IntegrationTests.Controllers
                 SupplierId = product.Supplier.SupplierId
             };
 
-            var response = await _httpClient.PutAsJsonAsync("1", productModified);
+            var response = await httpClient.PutAsJsonAsync("1", productModified);
 
             response.EnsureSuccessStatusCode();
 
-            var modifiedProduct = await _httpClient.GetFromJsonAsync<ProductModel>("1");
+            var modifiedProduct = await httpClient.GetFromJsonAsync<ProductModel>("1");
 
             Assert.Equal(HttpStatusCode.NoContent, response.StatusCode);
             Assert.Equal(product.Name, modifiedProduct.Name);
