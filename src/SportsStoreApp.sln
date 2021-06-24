@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30320.27
 MinimumVisualStudioVersion = 15.0.26124.0
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServerApp", "ServerApp\ServerApp.csproj", "{7AA4D07F-70AA-40BA-94B3-516108B52128}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SportsStore", "SportsStore\SportsStore.csproj", "{7AA4D07F-70AA-40BA-94B3-516108B52128}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServerApp.IntegrationTests", "ServerApp.IntegrationTests\ServerApp.IntegrationTests.csproj", "{CB77694D-7B0A-4B7F-A1B0-0687F25B065B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SportsStore.IntegrationTests", "SportsStore.IntegrationTests\SportsStore.IntegrationTests.csproj", "{CB77694D-7B0A-4B7F-A1B0-0687F25B065B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
