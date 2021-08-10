@@ -6,6 +6,7 @@ import { ProductService } from './product.service';
 import { SupplierService } from './supplier.service';
 
 describe('AppComponent', () => {
+  let testProducts: { name: string, category: string, price: number }[];
   let mockProductService: any;
   let mockSupplierService: any;
 
@@ -25,6 +26,11 @@ describe('AppComponent', () => {
         { provide: SupplierService, useValue: mockSupplierService }
       ]
     }).compileComponents();
+
+    testProducts = [
+      { name: 'Kayak', category: 'Water sports', price: 276 },
+      { name: 'Lifejacket', category: 'Water sports', price: 49.95 }
+    ];
   }));
 
   it('should create the app', () => {
@@ -61,11 +67,7 @@ describe('AppComponent', () => {
 
   it('can retrieve multiple products', () => {
     const fixture = TestBed.createComponent(AppComponent);
-    const products = [
-      { name: 'Kayak', category: 'Water sports', price: '276' },
-      { name: 'Lifejacket', category: 'Water sports', price: '49.95' }
-    ];
-    mockProductService.getProducts.and.returnValue(of(products));
+    mockProductService.getProducts.and.returnValue(of(testProducts));
 
     fixture.componentInstance.getProducts();
 
@@ -74,8 +76,7 @@ describe('AppComponent', () => {
 
   it('should create a product', () => {
     const fixture = TestBed.createComponent(AppComponent);
-    const products = [{ name: 'Kayak', category: 'Water sports', price: '275' }];
-    mockProductService.getProducts.and.returnValue(of(products));
+    mockProductService.getProducts.and.returnValue(of(testProducts));
     mockProductService.createProduct.and.returnValue(of({}));
 
     fixture.componentInstance.getProducts();
@@ -86,8 +87,7 @@ describe('AppComponent', () => {
 
   it('should create a product (including its supplier)', () => {
     const fixture = TestBed.createComponent(AppComponent);
-    const products = [{ name: 'Kayak', category: 'Water sports', price: '275' }];
-    mockProductService.getProducts.and.returnValue(of(products));
+    mockProductService.getProducts.and.returnValue(of(testProducts));
     mockProductService.createProduct.and.returnValue(of({}));
     mockSupplierService.createSupplier.and.returnValue(of({}));
 
@@ -167,6 +167,5 @@ describe('AppComponent', () => {
     fixture.componentInstance.deleteSupplier();
 
     expect(mockSupplierService.deleteSupplier).toHaveBeenCalled();
-
   });
 });
