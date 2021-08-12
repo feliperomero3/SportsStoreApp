@@ -72,7 +72,7 @@ steps:
     publishWebProjects: false
     projects: '**/!(*Test*).csproj'
     arguments: '--no-build --configuration $(buildConfiguration) --output $(Build.ArtifactStagingDirectory)'
-    zipAfterPublish: false
+    zipAfterPublish: true
 
 - task: PublishBuildArtifacts@1
   displayName: 'Publish artifacts'
