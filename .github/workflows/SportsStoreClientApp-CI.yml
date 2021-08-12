@@ -6,7 +6,7 @@ on:
     paths:
     - 'ClientApp/**'
     - '**/SportsStoreClientApp-CI.yml'
-  pull_request:
+  pull_request_target:
     branches: [ master ]
     paths:
     - 'ClientApp/**'
