@@ -28,10 +28,10 @@ The Application is one part Angular and other part ASP.NET Core MVC 3.
     cd ClientApp
     npm install
     cd ..
-    cd src/ServerApp
+    cd src/SportsStore
     dotnet restore
     dotnet build
-    dotnet run --project ServerApp.csproj
+    dotnet run --project SportsStore.csproj
     ```
 
 5. Open <https://localhost:5001> on your favorite web browser. _It may take a while to start on first launch._
