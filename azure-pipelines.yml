@@ -36,7 +36,7 @@ steps:
     script: |
       dotnet tool restore
       dotnet libman restore
-    workingDirectory: 'ServerApp'
+    workingDirectory: 'src\SportsStore'
 
 - task: SonarCloudPrepare@1
   displayName: Prepare SonarCloud analysis
