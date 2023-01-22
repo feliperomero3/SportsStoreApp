@@ -15,13 +15,13 @@ describe('ProductService', () => {
   }));
 
   it('should be created', () => {
-    const service: ProductService = TestBed.get(ProductService);
+    const service: ProductService = TestBed.inject(ProductService);
     expect(service).toBeTruthy();
   });
 
   it('should set the correct URL to get a product', () => {
-    const service: ProductService = TestBed.get(ProductService);
-    const controller: HttpTestingController = TestBed.get(HttpTestingController);
+    const service: ProductService = TestBed.inject(ProductService);
+    const controller: HttpTestingController = TestBed.inject(HttpTestingController);
 
     service.getProduct(4).subscribe();
 
@@ -31,8 +31,8 @@ describe('ProductService', () => {
   });
 
   it('should set the correct URL to get products by category', () => {
-    const service: ProductService = TestBed.get(ProductService);
-    const controller: HttpTestingController = TestBed.get(HttpTestingController);
+    const service: ProductService = TestBed.inject(ProductService);
+    const controller: HttpTestingController = TestBed.inject(HttpTestingController);
 
     service.getProducts('Water sports').subscribe();
 
@@ -42,8 +42,8 @@ describe('ProductService', () => {
   });
 
   it('should set the correct URL to search for products', () => {
-    const service: ProductService = TestBed.get(ProductService);
-    const controller: HttpTestingController = TestBed.get(HttpTestingController);
+    const service: ProductService = TestBed.inject(ProductService);
+    const controller: HttpTestingController = TestBed.inject(HttpTestingController);
 
     service.getProducts(null, 'Kayak').subscribe();
 
@@ -53,8 +53,8 @@ describe('ProductService', () => {
   });
 
   it('should set the correct URL to get products by category including a search term', () => {
-    const service: ProductService = TestBed.get(ProductService);
-    const controller: HttpTestingController = TestBed.get(HttpTestingController);
+    const service: ProductService = TestBed.inject(ProductService);
+    const controller: HttpTestingController = TestBed.inject(HttpTestingController);
 
     service.getProducts('Water sports', 'Kayak').subscribe();
 
@@ -64,8 +64,8 @@ describe('ProductService', () => {
   });
 
   it('should create a product', () => {
-    const service: ProductService = TestBed.get(ProductService);
-    const controller: HttpTestingController = TestBed.get(HttpTestingController);
+    const service: ProductService = TestBed.inject(ProductService);
+    const controller: HttpTestingController = TestBed.inject(HttpTestingController);
     const product = new Product(0, 'Splash Snorkel', 'Silicone snorkel with semi-dry top', 'Water sports',
       14.49, new Supplier(1, 'Splash Dudes', 'San Jose', 'CA'));
 
@@ -81,8 +81,8 @@ describe('ProductService', () => {
   });
 
   it('should replace a product', () => {
-    const service: ProductService = TestBed.get(ProductService);
-    const controller: HttpTestingController = TestBed.get(HttpTestingController);
+    const service: ProductService = TestBed.inject(ProductService);
+    const controller: HttpTestingController = TestBed.inject(HttpTestingController);
     const product = new Product(1, 'Splash Snorkel', 'Silicone snorkel with semi-dry top', 'Water sports',
       14.49, new Supplier(1, 'Splash Dudes', 'San Jose', 'CA'));
 
@@ -98,8 +98,8 @@ describe('ProductService', () => {
   });
 
   it('should update a product', () => {
-    const service: ProductService = TestBed.get(ProductService);
-    const controller: HttpTestingController = TestBed.get(HttpTestingController);
+    const service: ProductService = TestBed.inject(ProductService);
+    const controller: HttpTestingController = TestBed.inject(HttpTestingController);
     const product = new Product(1, 'Splash Snorkel', 'Silicone snorkel with semi-dry top', 'Water sports',
       14.49, new Supplier(1, 'Splash Dudes', 'San Jose', 'CA'));
 
@@ -117,8 +117,8 @@ describe('ProductService', () => {
   });
 
   it('should delete a product', () => {
-    const service: ProductService = TestBed.get(ProductService);
-    const controller: HttpTestingController = TestBed.get(HttpTestingController);
+    const service: ProductService = TestBed.inject(ProductService);
+    const controller: HttpTestingController = TestBed.inject(HttpTestingController);
     const productId = 1;
 
     service.deleteProduct(productId).subscribe(

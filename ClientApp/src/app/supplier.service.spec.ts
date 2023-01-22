@@ -14,13 +14,13 @@ describe('SupplierService', () => {
   }));
 
   it('should be created', () => {
-    const service: SupplierService = TestBed.get(SupplierService);
+    const service: SupplierService = TestBed.inject(SupplierService);
     expect(service).toBeTruthy();
   });
 
   it('should set the correct URL to create a supplier', () => {
-    const service: SupplierService = TestBed.get(SupplierService);
-    const controller: HttpTestingController = TestBed.get(HttpTestingController);
+    const service: SupplierService = TestBed.inject(SupplierService);
+    const controller: HttpTestingController = TestBed.inject(HttpTestingController);
     const supplier = new Supplier(0, 'Splash Dudes', 'San Jose', 'CA');
 
     service.createSupplier(supplier).subscribe();
@@ -32,8 +32,8 @@ describe('SupplierService', () => {
   });
 
   it('should handle a create supplier operation that failed', () => {
-    const service: SupplierService = TestBed.get(SupplierService);
-    const controller: HttpTestingController = TestBed.get(HttpTestingController);
+    const service: SupplierService = TestBed.inject(SupplierService);
+    const controller: HttpTestingController = TestBed.inject(HttpTestingController);
     const supplier = new Supplier(0, 'Splash Dudes', 'San Jose', 'CA');
 
     service.createSupplier(supplier).subscribe(
@@ -46,8 +46,8 @@ describe('SupplierService', () => {
   });
 
   it('should replace a supplier', () => {
-    const service: SupplierService = TestBed.get(SupplierService);
-    const controller: HttpTestingController = TestBed.get(HttpTestingController);
+    const service: SupplierService = TestBed.inject(SupplierService);
+    const controller: HttpTestingController = TestBed.inject(HttpTestingController);
     const supplier = new Supplier(1, 'Splash Dudes', 'San Jose', 'CA');
 
     service.replaceSupplier(supplier).subscribe(
@@ -62,8 +62,8 @@ describe('SupplierService', () => {
   });
 
   it('should delete a supplier', () => {
-    const service: SupplierService = TestBed.get(SupplierService);
-    const controller: HttpTestingController = TestBed.get(HttpTestingController);
+    const service: SupplierService = TestBed.inject(SupplierService);
+    const controller: HttpTestingController = TestBed.inject(HttpTestingController);
     const supplierId = 1;
 
     service.deleteSupplier(supplierId).subscribe(
