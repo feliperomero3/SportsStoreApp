@@ -62,7 +62,7 @@ jobs:
       working-directory: ClientApp
       run: sed -i 's+/home/runner/work/SportsStoreApp/SportsStoreApp+/github/workspace+g' coverage/SportsStore/lcov.info
     - name: SonarCloud Scan
-      uses: sonarsource/sonarcloud-github-action@v1.6
+      uses: sonarsource/sonarcloud-github-action@v3.0.0
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
